@@ -1,25 +1,18 @@
-import { IconHeart } from "@tabler/icons";
-import {
-  Card,
-  Image,
-  Text,
-  Group,
-  Badge,
-  Button,
-  ActionIcon,
-  createStyles,
-} from "@mantine/core";
+import { IconHeart } from '@tabler/icons';
+import { Card, Text, Group, Badge, Button, ActionIcon, createStyles, Image } from '@mantine/core';
+
+// DO NOT DO THIS!!
+// import Image from 'next/image'; // not sure this changed anything, v. using mantine Image
 
 const useStyles = createStyles((theme) => ({
   card: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
   },
 
   section: {
     //OPTION: COMMENT NEXT 3 LINES OUT IF NO SECTION BORDERS DESIRED
     borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
     paddingLeft: theme.spacing.md,
     paddingRight: theme.spacing.md,
@@ -31,7 +24,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   label: {
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
     fontSize: theme.fontSizes.xs,
     fontWeight: 700,
   },
@@ -48,18 +41,12 @@ interface BadgeCardProps {
   }[];
 }
 
-export function BadgeCard({
-  image,
-  title,
-  description,
-  date,
-  badges,
-}: BadgeCardProps) {
+export function BadgeCard({ image, title, description, date, badges }: BadgeCardProps) {
   const { classes, theme } = useStyles();
 
   const features = badges.map((badge) => (
     <Badge
-      color={theme.colorScheme === "dark" ? "dark" : "gray"}
+      color={theme.colorScheme === 'dark' ? 'dark' : 'gray'}
       key={badge.label}
       leftSection={badge.emoji}
     >

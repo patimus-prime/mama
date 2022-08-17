@@ -169,6 +169,19 @@ export function Hero_Landing() {
             😍 DOG!
           </Button>
 
+          <Button
+            component="a"
+            href="/hello_world"
+            size="xl"
+            radius="xl"
+            variant="gradient"
+            gradient={{ from: 'red', to: 'purple', deg: 45 }}
+            className={classes.control}
+            leftIcon={<IconBat size={20} />}
+          >
+            Elsewhere
+          </Button>
+
           {/* alternative:  component = "a" href ="wherever"*/}
         </div>
       </div>

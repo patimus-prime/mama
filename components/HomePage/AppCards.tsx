@@ -37,7 +37,7 @@ export function AppCardsSection() {
       <Grid>
         <Grid.Col md={6} lg={3}>
           <BadgeCard
-            image={ReactIcon}
+            image="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
             title={'Hello there'}
             date="May 2022"
             description={'Turbo description'}
@@ -49,7 +49,7 @@ export function AppCardsSection() {
         </Grid.Col>
         <Grid.Col md={6} lg={3}>
           <BadgeCard
-            image={`url(${ReactIcon})`}
+            image="https://cdn.rcsb.org/images/structures/w0/1w0e/1w0e_assembly-1.jpeg" // {`url(${ReactIcon})`}
             title={'Hello there'}
             date="May 2022"
             description={'Turbo description'}
@@ -61,7 +61,7 @@ export function AppCardsSection() {
         </Grid.Col>
         <Grid.Col md={6} lg={3}>
           <BadgeCard
-            image="https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+            image="https://th.bing.com/th/id/R.24ab0afb82bad67a4c6660cc3ab0806c?rik=6lwn3W9veY96Zg&riu=http%3a%2f%2fwww.psychologytoday.com%2ffiles%2fu522%2fhappy+sad+faces.jpg&ehk=YNuSpHXNlYRDo16uEToC5Vf1X%2fOzh8lftvX5JSidvrs%3d&risl=&pid=ImgRaw&r=0"
             title={'Hello there'}
             date="May 2022"
             description={'Turbo description'}
