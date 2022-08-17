@@ -5,6 +5,9 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
+import { NavBarSimple } from '../components/Navigation/NavBarSimple';
+import { NavbarNested } from '../components/dependencies/NavBarNested';
+import AppShellNested from '../components/Navigation/AppShell';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
@@ -26,11 +29,21 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
 
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
-          {/* WRAP IN NAVBAR/APPSHELL HERE */}
-          <NotificationsProvider>
-            <Component {...pageProps} />
-          </NotificationsProvider>
-          {/* CLOSE NAVBAR HERE */}
+          <AppShell
+            // padding="md"
+            navbar={<NavBarSimple />}
+            // header={<Header height={60} p="xs">{/* Header content */}</Header>}
+            styles={(theme) => ({
+              main: {
+                backgroundColor:
+                  theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+              },
+            })}
+          >
+            <NotificationsProvider>
+              <Component {...pageProps} />
+            </NotificationsProvider>
+          </AppShell>
         </MantineProvider>
       </ColorSchemeProvider>
     </>

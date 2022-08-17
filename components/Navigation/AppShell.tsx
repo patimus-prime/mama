@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   AppShell,
   Navbar,
@@ -10,9 +10,10 @@ import {
   Burger,
   useMantineTheme,
   AppShellProps,
-} from "@mantine/core";
-import { NavbarNested } from "./dependencies/NavBarNested";
-import { HeaderMiddle } from "./dependencies/Header";
+} from '@mantine/core';
+import { NavbarNested } from '../dependencies/NavBarNested';
+import { HeaderMiddle } from '../dependencies/Header';
+import { NavBarSimple } from './NavBarSimple';
 // import { Hero_Landing } from './Hero_landing';
 
 export default function AppShellNested() {
@@ -22,10 +23,7 @@ export default function AppShellNested() {
     <AppShell
       styles={{
         main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
+          background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
         },
       }}
       // THIS IS SUS BUT SHOULD KEEP IT THE SAME SHIT EVERY PAGE:
@@ -33,7 +31,8 @@ export default function AppShellNested() {
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
-        <NavbarNested />
+        // <NavbarNested />
+        <NavBarSimple />
         // <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
         //   <Text>Application navbar</Text>
         // </Navbar>
@@ -69,7 +68,7 @@ export default function AppShellNested() {
 
         //   </div>
         // </Header>
-        <HeaderMiddle links={[{ label: "Home", link: "/" }]} />
+        <HeaderMiddle links={[{ label: 'Home', link: '/' }]} />
         // links: [
         //   { label: 'Heme Binding Energy Distributions', link: '/' },
         //   { label: 'Multiclassification: SMILES to L1', link: '/' },
