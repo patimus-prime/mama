@@ -1,5 +1,5 @@
 import { createStyles, ThemeIcon, Text, SimpleGrid, Box, Stack } from '@mantine/core';
-import { IconSun, IconPhone, IconMapPin, IconAt, IconMail, IconBrandLinkedin } from '@tabler/icons';
+import { IconMail, IconBrandLinkedin } from '@tabler/icons';
 
 type ContactIconVariant = 'white' | 'gradient';
 
@@ -84,11 +84,6 @@ const MOCKDATA = [
     description: 'https://www.linkedin.com/in/patrick-finnerty',
     icon: IconBrandLinkedin,
   },
-  // BIG ASS NOTE: THIS WILL BE A PUBLIC WEBSITE. BE SUS ABOUT GIVING OUT PHONE.
-
-  //   { title: 'Phone', description: '+1 (951) 252-5211', icon: IconPhone },
-  //   { title: 'Address', description: '844 Morris Park avenue', icon: IconMapPin },
-  //   { title: 'Working hours', description: '8 a.m. – 11 p.m.', icon: IconSun },
 ];
 
 export function ContactIconsList({ data = MOCKDATA, variant }: ContactIconsListProps) {
@@ -99,16 +94,6 @@ export function ContactIconsList({ data = MOCKDATA, variant }: ContactIconsListP
 export function ContactIcons() {
   return (
     <SimpleGrid cols={2} breakpoints={[{ maxWidth: 755, cols: 1 }]}>
-      {/* <Box
-        sx={(theme) => ({
-          padding: theme.spacing.xl,
-          borderRadius: theme.radius.md,
-          backgroundColor: theme.white,
-        })}
-      >
-        <ContactIconsList />
-      </Box> */}
-
       <Box
         sx={(theme) => ({
           padding: theme.spacing.xl,

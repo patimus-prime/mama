@@ -16,7 +16,6 @@ import { GithubIcon } from '@mantine/ds';
 
 import { IconBat, IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons';
 
-// strongly suspect we need to make a change to link behavior :)))))
 import Link from 'next/link';
 import React from 'react';
 import { useHref } from 'react-router-dom';
@@ -101,7 +100,7 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
           [classes.linkActive]: active === link.link,
         })}
 
-        // LMFAO IT'S SO EASY JUST COMMENT OUT THE ONCLICK SHIT AND KEEP THE LABEL OMG FUCK
+        // Comment out ability to update 'Active'; link.label kept below though.
 
         // onClick={(event) => {
         //   event.preventDefault();
@@ -110,11 +109,11 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
       >
         {link.label}
         {/* // link.label is what must be styled!
-    <Link href={link.link}>
-      {link.label} 
-      </Link>
+      <Link href={link.link}>
+        {link.label} 
+        </Link>
 
-    //  */}
+      //  */}
       </a>
     </Link>
   ));
@@ -123,11 +122,6 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
     <Header height={60} mb={120}>
       <Container className={classes.header}>
         {/* <MantineLogo size={28} /> */}
-        {/* <IconBat size={28} /> */}
-
-        {/* <Group spacing={5}>
-          <Text size={20}>patrick.finnerty42@gmail.com</Text>
-        </Group> */}
         {/* ADD OTHER PAGES/DROP DOWNS HERE: */}
 
         <Group spacing={5} className={classes.links}>
@@ -150,41 +144,13 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
           <Button
             compact={true} //GOOD
             component="a"
-            // href="https://www.linkedin.com/in/patrick-finnerty"
-            // size="xl"
             radius="sm"
             variant="subtle"
             color="gray"
-            // leftIcon={<IconMail size={22} stroke={1.5} />}
-            // className={classes.control}
-
             onClick={() => (window.location.href = 'mailto:patrick.finnerty42@gmail.com')}
           >
             <IconMail size={22} stroke={1.5} />
           </Button>
-
-          {/* <ActionIcon
-            component="a"
-            onClick={() => (window.location.href = 'patrick.finnerty42@gmail.com')}
-          >
-            <IconMail size={22} stroke={1.5} />
-          </ActionIcon> */}
-
-          {/* <button 
-          onClick={() => (window.location.href = 'mailto:yourmail@domain.com')}>
-            Contact Me
-          </button> */}
-          {/* <Text size={22}>patrick.finnerty42@gmail.com</Text> */}
-
-          {/* <ActionIcon size="lg">
-            <IconBrandTwitter size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube size={18} stroke={1.5} />
-          </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon> */}
         </Group>
         {/* <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" /> */}
       </Container>

@@ -1,32 +1,9 @@
-import {
-  createStyles,
-  Container,
-  Title,
-  Button,
-  Group,
-  Text,
-  List,
-  ThemeIcon,
-  Space,
-} from '@mantine/core';
+import { createStyles, Container, Title, Text, List, ThemeIcon } from '@mantine/core';
 
 import Image from 'next/image';
 
-import {
-  IconCheck,
-  IconBat,
-  IconPaw,
-  IconBolt,
-  IconChevronRight,
-  IconArrowBigRight,
-  IconFlame,
-  IconPepper,
-} from '@tabler/icons';
-// i like the pepper
+import { IconPaw } from '@tabler/icons';
 
-// import image from "./image.svg";
-import NoThisIsPatrick from './pics/no_this_is_patrick.gif';
-import Pinhead from '../../public/pinhead.gif';
 import ProfSherlock from '../../public/sherlock_prof.jpg';
 
 const useStyles = createStyles((theme) => ({
@@ -91,11 +68,7 @@ export default function Pat() {
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title className={classes.title}>
-              {/* A <span className={classes.highlight}>modern</span> React <br />{" "}
-                components library */}
-              Sherlock
-            </Title>
+            <Title className={classes.title}>Sherlock</Title>
             <Text color="dimmed" mt="md">
               He is the best. He has one white paw. A friend suggested naming him Michael Jackson.
             </Text>
@@ -129,38 +102,11 @@ export default function Pat() {
                 fashionable clothing.
               </List.Item>
             </List>
-
-            {/* <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control}>
-                Get started
-              </Button>
-              <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
-              </Button>
-            </Group> */}
           </div>
-          {/* <Image src={image.src} className={classes.image} /> */}
 
-          {/* <Image src={Pinhead} /> */}
-          {/* WEIRD ERROR IDK */}
           <Image src={ProfSherlock} />
         </div>
       </Container>
     </div>
   );
 }
-
-// export default function Sherlock() {
-//   return (
-
-//     <div>
-//       <h1>
-// Sherlock is, according to this adoption papers, an Australian Kelpie/Mix. I suspect he's
-// part chihuahua, because he can be grouchy and also he's smaller, and cuter than the dogs
-// that come up in pure-bred photos. He likes long walks, car rides, and spicy food. He enjoys
-// wearing fashionable clothing and believes himself a dog-shaped person; for all intents and
-// purposes he is.
-//       </h1>
-//     </div>
-//   );
-// }

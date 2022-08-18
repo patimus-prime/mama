@@ -1,12 +1,8 @@
-import { Title, Text, Container, Button, Overlay, createStyles, Space, Group } from '@mantine/core';
-import Image from 'next/image';
+import { Title, Text, Container, Button, Overlay, createStyles, Space } from '@mantine/core';
 import { useScrollIntoView } from '@mantine/hooks';
-import { IconBat, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons';
+import { IconBrandLinkedin } from '@tabler/icons';
 import { GithubIcon } from '@mantine/ds';
-import sherb_sleepy from '../../public/sherb_sleepy.jpg';
-// import {targetRef} from "./SherlockGrid";
 import './SherlockGrid';
-import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -98,8 +94,6 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-// AND HOPEFULLY TARGETREF CORRECTLY PASSED FROM SherlockGrid
-
 export function Hero_Landing() {
   const { classes, cx } = useStyles();
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({});
@@ -164,8 +158,6 @@ export function Hero_Landing() {
             onClick={() => {
               document.getElementById('sherbID')?.scrollIntoView({ behavior: 'smooth' });
             }}
-
-            // leftIcon={<GithubIcon size={20} />}
           >
             😍 DOG!
           </Button>

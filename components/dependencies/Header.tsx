@@ -1,15 +1,7 @@
 import { useState } from 'react';
-import { createStyles, Header, Group, ActionIcon, Container, Burger, Text } from '@mantine/core';
+import { createStyles, Header, Group, ActionIcon, Container, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import {
-    IconBat,
-    IconBrandLinkedin,
-    IconBrandGithub,
-    IconBrandTwitter,
-    IconBrandYoutube,
-    IconBrandInstagram} from '@tabler/icons';
-//import { MantineLogo } from '@mantine/ds';
-
+import { IconBat, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons';
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -103,27 +95,18 @@ export function HeaderMiddle({ links }: HeaderMiddleProps) {
         </Group>
 
         {/* <MantineLogo size={28} /> */}
-        < IconBat size={28} />
+        <IconBat size={28} />
         {/* <Text size = {28}>
             <IconBat size = {28}/> PatSite <IconBat size = {28}/>
         </Text> */}
-        
+
         <Group spacing={0} className={classes.social} position="right" noWrap>
-            <ActionIcon component = "a" href="https://www.linkedin.com/in/patrick-finnerty"  size="lg">
-                <IconBrandLinkedin size={22} stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon component = "a" href="https://www.github.com/patimus-prime" size="lg">
-                <IconBrandGithub size={22} stroke={1.5} />
-            </ActionIcon>
-          {/* <ActionIcon size="lg">
-            <IconBrandTwitter size={18} stroke={1.5} />
+          <ActionIcon component="a" href="https://www.linkedin.com/in/patrick-finnerty" size="lg">
+            <IconBrandLinkedin size={22} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandYoutube size={18} stroke={1.5} />
+          <ActionIcon component="a" href="https://www.github.com/patimus-prime" size="lg">
+            <IconBrandGithub size={22} stroke={1.5} />
           </ActionIcon>
-          <ActionIcon size="lg">
-            <IconBrandInstagram size={18} stroke={1.5} />
-          </ActionIcon> */}
         </Group>
       </Container>
     </Header>

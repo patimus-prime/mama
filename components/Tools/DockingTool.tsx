@@ -1,14 +1,12 @@
-import { Badge, Container, Grid, Text, Title, Space, Button } from '@mantine/core';
+import { Container, Grid, Space, Button } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons';
 import { CheckboxCard } from '../dependencies/Checkbox';
 import { DropzoneButton } from '../dependencies/Dropzone';
-import { FloatingLabelInput } from '../dependencies/FloatingLabel';
 import { InputEmail } from '../dependencies/inputsDockingTool/InputEmail';
 import { InputLigand } from '../dependencies/inputsDockingTool/InputLigand';
 import { InputPDB } from '../dependencies/inputsDockingTool/InputPDB';
 
 export function DockingTool() {
-  // the fn might return more than just targetRef, just hoping to import this elsewhere
   return (
     <Container>
       <Space h="xl" />

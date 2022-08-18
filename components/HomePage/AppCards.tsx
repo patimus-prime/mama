@@ -1,28 +1,7 @@
-import { Badge, Container, Grid, Text, Title, Space, Button } from '@mantine/core';
-// import { Card } from "@mantine/core";
-// import heme from "./app_descrips/heme.json";
+import { Container, Grid, Text, Title, Space, Button } from '@mantine/core';
 import { BadgeCard } from '../dependencies/BadgeCard';
-import { IconBat, IconChevronRight } from '@tabler/icons';
-import ReactIcon from '../../public/react.svg';
 import Link from 'next/link';
-// ****************
-// NOT WORTH FIGURING OUT MAPPING ETC. W/ JSON AT THIS TIME LOL
-// **************
 
-// type appDescrip = {
-//   image: string;
-//   title: string;
-//   country: string;
-//   description: string;
-//   badges: {
-//     emoji: string;
-//     label: string;
-//   }[];
-// };
-
-// const hemeStuff: appDescrip = JSON.parse(heme);
-
-// export function appCardsSection(): JSX.Element {
 export function AppCardsSection() {
   return (
     <Container>
@@ -157,10 +136,6 @@ export function AppCardsSection() {
             ]}
           ></BadgeCard>
         </Grid.Col>
-
-        {/* <Grid.Col md={6} lg={3}>
-              4
-            </Grid.Col> */}
       </Grid>
 
       <Space h="xl" />
@@ -184,16 +159,3 @@ export function AppCardsSection() {
     </Container>
   );
 }
-
-// console.log(heme.image);
-
-// interface BadgeCardProps {
-//   image: string;
-//   title: string;
-//   country: string;
-//   description: string;
-//   badges: {
-//     emoji: string;
-//     label: string;
-//   }[];
-// }

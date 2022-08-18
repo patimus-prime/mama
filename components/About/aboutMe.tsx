@@ -7,29 +7,12 @@ import {
   Text,
   List,
   ThemeIcon,
-  Space,
 } from '@mantine/core';
 
 import Image from 'next/image';
 
-import {
-  IconCheck,
-  IconBat,
-  IconBolt,
-  IconChevronRight,
-  IconArrowBigRight,
-  IconFlame,
-  IconBrandLinkedin,
-  IconMail,
-  IconPepper,
-  IconMoodSad,
-  IconMoodCry,
-  IconMoodHappy,
-} from '@tabler/icons';
-// i like the pepper
+import { IconBat, IconBrandLinkedin, IconMail, IconPepper } from '@tabler/icons';
 
-// import image from "./image.svg";
-import NoThisIsPatrick from './pics/no_this_is_patrick.gif';
 import Pinhead from '../../public/pinhead.gif';
 
 const useStyles = createStyles((theme) => ({
@@ -94,23 +77,13 @@ export default function Pat() {
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title className={classes.title}>
-              {/* A <span className={classes.highlight}>modern</span> React <br />{" "}
-                components library */}
-              Pat
-            </Title>
+            <Title className={classes.title}>Pat</Title>
             <Text color="dimmed" mt="md">
               I am a buffoon masquerading as a functional adult; and I like to think I do a pretty
               good impression. In addition to that, my skills include:
-              {/* Aside from my Master's and the projects described, I worked for two years in
-              pharmaceutical R&D, antibody formulation development. I like to think my skillset is
-              pretty versatile, having experience both inside the laboratory and at the keyboard. I
-              don't think I'm quite a jack of all trades – but maybe like a 7-of-clubs of a few. */}
-              {/* don't think I can adequately
-              describe my skillset in one title. If you'll permit me a few bullets:             */}
             </Text>
 
-            {/* GOOD LIST */}
+            {/* 1st List; separate to have different icons */}
             <List
               mt={30}
               spacing="sm"
@@ -174,14 +147,11 @@ export default function Pat() {
               <Button
                 compact={false} //GOOD
                 component="a"
-                // href="https://www.linkedin.com/in/patrick-finnerty"
                 size="xl"
                 radius="xl"
                 variant="gradient"
                 gradient={{ from: 'red', to: 'gray', deg: 45 }}
                 color="gray"
-                // leftIcon={<IconMail size={22} stroke={1.5} />}
-                // className={classes.control}
                 leftIcon={<IconMail size={22} stroke={1.5} />}
                 onClick={() => (window.location.href = 'mailto:patrick.finnerty42@gmail.com')}
               >
@@ -189,10 +159,7 @@ export default function Pat() {
               </Button>
             </Group>
           </div>
-          {/* <Image src={image.src} className={classes.image} /> */}
 
-          {/* <Image src={Pinhead} /> */}
-          {/* WEIRD ERROR IDK */}
           <Image src={Pinhead} />
         </div>
       </Container>

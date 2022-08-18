@@ -1,11 +1,4 @@
-import {
-  Navbar,
-  Group,
-  Code,
-  ScrollArea,
-  createStyles,
-  Text,
-} from "@mantine/core";
+import { Navbar, Group, Code, ScrollArea, createStyles, Text } from '@mantine/core';
 import {
   IconHome,
   IconNotes,
@@ -20,10 +13,10 @@ import {
   IconBooks,
   IconPaw,
   IconTools,
-} from "@tabler/icons";
-import { UserButton } from "./UserButton";
-import { LinksGroup } from "./NavbarLinksGroup";
-import { About } from "../../pages/About";
+} from '@tabler/icons';
+import { UserButton } from './UserButton';
+import { LinksGroup } from './NavbarLinksGroup';
+// import { About } from "../../pages/About";
 //import { Logo } from './logo.svg';
 
 // export default {
@@ -32,36 +25,35 @@ import { About } from "../../pages/About";
 
 const mockdata = [
   // This would be the hero etc. summary:
-  { label: "Home", icon: IconHome },
+  { label: 'Home', icon: IconHome },
 
   {
-    label: "Projects",
+    label: 'Projects',
     icon: IconBooks,
     initiallyOpened: false,
     links: [
-      { label: "Heme Binding Energy Distributions", link: "/" },
-      { label: "Multiclassification: SMILES to L1", link: "/" },
-      { label: "Master's Thesis", link: "/" },
-      { label: "Web Scraping for Anagrams/Palindromes", link: "/" },
+      { label: 'Heme Binding Energy Distributions', link: '/' },
+      { label: 'Multiclassification: SMILES to L1', link: '/' },
+      { label: "Master's Thesis", link: '/' },
+      { label: 'Web Scraping for Anagrams/Palindromes', link: '/' },
     ],
   },
 
   {
-    label: "Tools",
+    label: 'Tools',
     icon: IconTools,
     initiallyOpened: false,
-    links: [{ label: "Dock/Score your PDB", link: "/" }],
+    links: [{ label: 'Dock/Score your PDB', link: '/' }],
   },
 
-  { label: "Sherlock!", icon: IconPaw, link: "../../pages/about" },
+  { label: 'Sherlock!', icon: IconPaw, link: '../../pages/about' },
 
-  { label: "Contact", icon: IconBat },
+  { label: 'Contact', icon: IconBat },
 ];
 
 const useStyles = createStyles((theme) => ({
   navbar: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
     paddingBottom: 0,
   },
 
@@ -70,9 +62,9 @@ const useStyles = createStyles((theme) => ({
     paddingTop: 0,
     marginLeft: -theme.spacing.md,
     marginRight: -theme.spacing.md,
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
     borderBottom: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
 
@@ -90,16 +82,14 @@ const useStyles = createStyles((theme) => ({
     marginLeft: -theme.spacing.md,
     marginRight: -theme.spacing.md,
     borderTop: `1px solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
+      theme.colorScheme === 'dark' ? theme.colors.dark[4] : theme.colors.gray[3]
     }`,
   },
 }));
 
 export function NavbarNested() {
   const { classes } = useStyles();
-  const links = mockdata.map((item) => (
-    <LinksGroup {...item} key={item.label} />
-  ));
+  const links = mockdata.map((item) => <LinksGroup {...item} key={item.label} />);
 
   return (
     <Navbar height={800} width={{ sm: 220 }} p="md" className={classes.navbar}>

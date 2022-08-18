@@ -107,11 +107,7 @@ export function BadgeCard({
         <Link href={projectDetails} passHref>
           <Button
             component="a"
-            // href={projectRepo}
-            // size="xl"
             radius="md"
-            // variant="default"
-            // className={classes.control}
             leftIcon={<IconInfoSquare size={20} />}
             style={{ flex: 1 }}
           >
@@ -122,20 +118,13 @@ export function BadgeCard({
         <Link href={projectRepo} passHref>
           <Button
             component="a"
-            // href={projectRepo}
-            // size="xl"
             radius="md"
             variant="default"
-            // className={classes.control}
             leftIcon={<IconBrandGithub size={20} />}
           >
             Git Repo
           </Button>
         </Link>
-
-        {/* <ActionIcon variant="default" radius="md" size={36}>
-          <IconBrandGithub size={18} className={classes.like} stroke={1.5} />
-        </ActionIcon> */}
       </Group>
     </Card>
   );
