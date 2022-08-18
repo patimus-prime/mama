@@ -17,7 +17,19 @@ import {
   IconLogout,
   IconSwitchHorizontal,
 } from '@tabler/icons';
+
+import Link from 'next/link';
+
+import {
+  Router, // == or =/= to BrowserRouter?
+  BrowserRouter,
+  // Link,
+  Route,
+  Routes,
+} from 'react-router-dom';
+
 import { MantineLogo } from '@mantine/ds';
+import HomePage from '../../pages';
 
 const useStyles = createStyles((theme) => ({
   link: {
@@ -80,8 +92,7 @@ const mockdata = [
   {
     label: 'Tools',
     icon: IconTools,
-    initiallyOpened: false,
-    links: [{ label: 'Dock/Score your PDB', link: '/Tools/Docking' }],
+    link: '/Tools/Docking',
   },
 
   { label: 'Sherlock!', icon: IconPaw, link: '/aboutSherlock' },
@@ -93,15 +104,17 @@ export function NavBarSimple() {
   const [active, setActive] = useState(2);
 
   const links = mockdata.map((link, index) => (
-    <NavbarLink
-      {...link}
-      key={link.label}
-      active={index === active}
-      onClick={() => setActive(index)}
-    />
+    // <NavbarLink
+    //   {...link}
+    //   key={link.label}
+    //   active={index === active}
+    //   onClick={() => setActive(index)}
+    // />
+    <Link href={link.link}>{link.label}</Link>
   ));
 
   return (
+    // <BrowserRouter>
     <Navbar height={750} width={{ base: 80 }} p="md">
       <Center>
         <MantineLogo type="mark" size={30} />
@@ -117,6 +130,8 @@ export function NavBarSimple() {
           <NavbarLink icon={IconLogout} label="Logout" />
         </Stack>
       </Navbar.Section>
+
+      {/* THIS GOES SOMEWHERE INSIDE THE APPSHELL/NAVBAR IDK HOMIE */}
     </Navbar>
   );
 }

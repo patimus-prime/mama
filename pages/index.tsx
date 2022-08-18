@@ -11,7 +11,8 @@ export default function HomePage() {
     <>
       {/* <Welcome /> */}
       <Hero_Landing />
-      <ColorSchemeToggle />
+      {/* NOTE: ALTER ColorSchemeToggle COMPONENT FOR SPACING/Group props IF RE-IMPLEMENTING */}
+      {/* <ColorSchemeToggle /> */}
       <AppCardsSection />
       <SherlockGrid />
     </>

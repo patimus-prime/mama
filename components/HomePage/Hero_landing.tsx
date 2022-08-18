@@ -6,6 +6,7 @@ import { GithubIcon } from '@mantine/ds';
 import sherb_sleepy from '../../public/sherb_sleepy.jpg';
 // import {targetRef} from "./SherlockGrid";
 import './SherlockGrid';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -156,7 +157,7 @@ export function Hero_Landing() {
             size="xl"
             radius="xl"
             variant="gradient"
-            gradient={{ from: 'red', to: 'yellow', deg: 45 }}
+            gradient={{ from: 'purple', to: 'yellow', deg: 45 }}
             className={classes.control}
             // this solution based on: https://stackoverflow.com/questions/43441856/how-to-scroll-to-an-element
             // ... user334907's answer
@@ -169,19 +170,24 @@ export function Hero_Landing() {
             😍 DOG!
           </Button>
 
-          <Button
-            component="a"
-            href="/hello_world"
-            size="xl"
-            radius="xl"
-            variant="gradient"
-            gradient={{ from: 'red', to: 'purple', deg: 45 }}
-            className={classes.control}
-            leftIcon={<IconBat size={20} />}
-          >
-            Elsewhere
-          </Button>
+          {/* Link component accomodates for Next.js routing;
+          Using href within button worked, but relatively slow navigation.
+          From: https://mantine.dev/core/button/#usage-with-nextjs */}
 
+          {/* <Link href="/hello_world" passHref>
+            <Button
+              component="a"
+              // href="/hello_world"
+              size="xl"
+              radius="xl"
+              variant="gradient"
+              gradient={{ from: 'red', to: 'purple', deg: 45 }}
+              className={classes.control}
+              leftIcon={<IconBat size={20} />}
+            >
+              Elsewhere
+            </Button>
+          </Link> */}
           {/* alternative:  component = "a" href ="wherever"*/}
         </div>
       </div>

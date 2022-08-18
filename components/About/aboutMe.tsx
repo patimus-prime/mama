@@ -1,6 +1,5 @@
 import {
   createStyles,
-  Image,
   Container,
   Title,
   Button,
@@ -10,6 +9,9 @@ import {
   ThemeIcon,
   Space,
 } from '@mantine/core';
+
+import Image from 'next/image';
+
 import {
   IconCheck,
   IconBat,
@@ -23,7 +25,7 @@ import {
 
 // import image from "./image.svg";
 import NoThisIsPatrick from './pics/no_this_is_patrick.gif';
-import Pinhead from '../components/pics/pinhead.gif';
+import Pinhead from '../../public/pinhead.gif';
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -93,8 +95,9 @@ export default function Pat() {
               Pat
             </Title>
             <Text color="dimmed" mt="md">
-              Build fully functional accessible web applications faster than ever – Mantine includes
-              more than 120 customizable components and hooks to cover you in any situation
+              Aside from my Master's and the projects described, I worked for two years in
+              pharmaceutical R&D, antibody formulation development. I don't think I can adequately
+              describe my skillset in one title. If you'll permit me a few bullets:
             </Text>
 
             <List
@@ -135,7 +138,7 @@ export default function Pat() {
 
           {/* <Image src={Pinhead} /> */}
           {/* WEIRD ERROR IDK */}
-          <Image src={'../public/pinhead.gif'} />
+          <Image src={Pinhead} />
         </div>
       </Container>
     </div>

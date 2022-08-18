@@ -8,7 +8,7 @@ import { NotificationsProvider } from '@mantine/notifications';
 import { NavBarSimple } from '../components/Navigation/NavBarSimple';
 import { NavbarNested } from '../components/dependencies/NavBarNested';
 import AppShellNested from '../components/Navigation/AppShell';
-
+import { HeaderSimple } from '../components/Navigation/HeaderSimple';
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -30,9 +30,19 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
       <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
           <AppShell
-            // padding="md"
-            navbar={<NavBarSimple />}
+            padding="md"
+            // navbar={<NavBarSimple />}
             // header={<Header height={60} p="xs">{/* Header content */}</Header>}
+            header={
+              <HeaderSimple
+                links={[
+                  { label: 'Home', link: '/' },
+                  { label: 'Projects', link: '/Projects' },
+                  { label: 'Tools', link: '/Tools' },
+                  { label: 'About', link: '/About' },
+                ]}
+              />
+            }
             styles={(theme) => ({
               main: {
                 backgroundColor:
