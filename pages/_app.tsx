@@ -40,6 +40,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                   { label: 'Projects', link: '/Projects' },
                   { label: 'Tools', link: '/Tools' },
                   { label: 'About', link: '/About' },
+                  { label: 'Contact', link: '/Contact' },
                 ]}
               />
             }

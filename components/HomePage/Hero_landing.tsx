@@ -121,8 +121,8 @@ export function Hero_Landing() {
             Including the best website – but unfortunately he has to share it with me.
             <Space h="xl" />
             Below are some brief overviews of my projects. And pictures of my dog. My LinkedIn and
-            the source code are also available by clicking the buttons here. Alternatively, you can
-            just go straight to his pictures.
+            the source code are also available by clicking the buttons here. ... Or you can just go
+            straight to his pictures.
           </Text>
         </Container>
 
