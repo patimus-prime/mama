@@ -19,7 +19,12 @@ import {
   IconChevronRight,
   IconArrowBigRight,
   IconFlame,
+  IconBrandLinkedin,
+  IconMail,
   IconPepper,
+  IconMoodSad,
+  IconMoodCry,
+  IconMoodHappy,
 } from '@tabler/icons';
 // i like the pepper
 
@@ -95,11 +100,17 @@ export default function Pat() {
               Pat
             </Title>
             <Text color="dimmed" mt="md">
-              Aside from my Master's and the projects described, I worked for two years in
-              pharmaceutical R&D, antibody formulation development. I don't think I can adequately
-              describe my skillset in one title. If you'll permit me a few bullets:
+              I am a buffoon masquerading as a functional adult; and I like to think I do a pretty
+              good impression. In addition to that, my skills include:
+              {/* Aside from my Master's and the projects described, I worked for two years in
+              pharmaceutical R&D, antibody formulation development. I like to think my skillset is
+              pretty versatile, having experience both inside the laboratory and at the keyboard. I
+              don't think I'm quite a jack of all trades – but maybe like a 7-of-clubs of a few. */}
+              {/* don't think I can adequately
+              describe my skillset in one title. If you'll permit me a few bullets:             */}
             </Text>
 
+            {/* GOOD LIST */}
             <List
               mt={30}
               spacing="sm"
@@ -112,26 +123,69 @@ export default function Pat() {
               }
             >
               <List.Item>
-                <b>Degrees</b> – I have a few Bachelor's in Chemical Engineering, Biochemistry, and
-                Molecular and Cellular Biology. Recently a Master's in Bioinformatics.
+                <b>Modeling</b> – I've worked with a few different molecular vizulation or
+                simulation tools, e.g. Chimera, RDKit, Rosetta and AutoDock Vina
               </List.Item>
               <List.Item>
-                <b>Pharma R&D</b> – Formulation falls right in the middle of the drug development
-                pipeline, so there was exposure to discovery, development and manufacturing of a
-                molecule and its formulation.
+                <b>Machine Learning</b> – I've had, or created the opportunity to work on several
+                projects building machine learning models for different applications.
               </List.Item>
               <List.Item>
-                <b>Computation</b> – There were a lot of interesting reports of ML applied to our
-                field.... too tired pat. FIXME
+                <b>Wet-lab</b> – Before my Master's, I worked for 2 years in antibody formulation
+                development
+              </List.Item>
+              <List.Item>
+                <b>Bringing it all together</b> – I've enjoyed having several projects where one had
+                to consider and integrate the science, the coding/modeling, and the significance,
+                the translation of the results to real-world applications.
+              </List.Item>
+            </List>
+
+            {/* 2nd LIST */}
+            <List
+              mt={30}
+              spacing="sm"
+              size="sm"
+              icon={
+                <ThemeIcon size={20} radius="xl">
+                  {/* NOTE: ALTER HERE FOR THE ICON/BULLETS */}
+                  <IconPepper size={17} stroke={1.5} />
+                </ThemeIcon>
+              }
+            >
+              <List.Item>
+                I too enjoy spicy food. It's like a delicious, purifying sauna: all the sweat and
+                tears leaving my body as I nourish it.
               </List.Item>
             </List>
 
             <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control}>
-                Get started
+              <Button
+                component="a"
+                href="https://www.linkedin.com/in/patrick-finnerty"
+                size="xl"
+                radius="xl"
+                variant="gradient"
+                className={classes.control}
+                leftIcon={<IconBrandLinkedin size={20} />}
+              >
+                LinkedIn
               </Button>
-              <Button variant="default" radius="xl" size="md" className={classes.control}>
-                Source code
+              <Button
+                compact={false} //GOOD
+                component="a"
+                // href="https://www.linkedin.com/in/patrick-finnerty"
+                size="xl"
+                radius="xl"
+                variant="gradient"
+                gradient={{ from: 'red', to: 'gray', deg: 45 }}
+                color="gray"
+                // leftIcon={<IconMail size={22} stroke={1.5} />}
+                // className={classes.control}
+                leftIcon={<IconMail size={22} stroke={1.5} />}
+                onClick={() => (window.location.href = 'mailto:patrick.finnerty42@gmail.com')}
+              >
+                Email me
               </Button>
             </Group>
           </div>
