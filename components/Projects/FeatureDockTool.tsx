@@ -9,6 +9,8 @@ import { Router, Routes, Route } from 'react-router-dom';
 import Smiles_Img from './pics/sherb_sleepy.jpg';
 import Construction_Img from '../../public/pat_construction.gif';
 
+import Link from 'next/link';
+
 export function FeatureDockTool() {
   // i see a lot of documentation of this but it don't work here wtf
   // const goTo = useNavigate();
@@ -29,6 +31,18 @@ export function FeatureDockTool() {
               If a hemoprotein, the rank amongst other hemoproteins' binding energies will be
               provided.
             </Text>
+            <Space h="xl" />
+            <Link href="/Tools" passHref>
+              <Button
+                component="a"
+                size="md"
+                radius="sm"
+                variant="gradient"
+                gradient={{ from: 'red', to: 'orange', deg: 45 }}
+              >
+                To Docking Tool
+              </Button>
+            </Link>
           </div>
 
           {/* <Route path="/DockingTool" element={<DockingTool />} /> */}

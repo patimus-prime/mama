@@ -10,7 +10,19 @@ import {
   Container,
   Space,
 } from '@mantine/core';
-import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons';
+import {
+  IconReceiptOff,
+  IconFlame,
+  IconCircleDotted,
+  IconFileCode,
+  IconSailboat,
+  IconRobot,
+  IconCloudComputing,
+  IconDatabase,
+  IconFilter,
+} from '@tabler/icons';
+
+import { GithubIcon } from '@mantine/ds';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -29,26 +41,32 @@ const useStyles = createStyles((theme) => ({
 
 const features = [
   {
-    icon: IconReceiptOff,
-    title: 'Free and open source',
-    description: 'All packages are published under MIT license, you can use Mantine in any project',
-  },
-  {
-    icon: IconFileCode,
-    title: 'TypeScript based',
-    description: 'Build type safe applications, all components and hooks export types',
-  },
-  {
-    icon: IconCircleDotted,
-    title: 'No annoying focus ring',
+    icon: IconSailboat,
+    title: 'AutoDock Vina',
     description:
-      'With new :focus-visible selector focus ring will appear only when user navigates with keyboard',
+      'This is the only open-source molecular docking software \
+    that has integrated capability to account for macrocycle conformations',
   },
   {
-    icon: IconFlame,
-    title: 'Flexible',
+    icon: IconCloudComputing,
+    title: 'Cloud-based',
     description:
-      'Customize colors, spacing, shadows, fonts and many other settings with global theme object',
+      'Project based in AWS EC2, enabling further development \
+    of front-end tools (see below, or Tools)',
+  },
+  {
+    icon: IconFilter,
+    title: 'Find optimal proteins',
+    description:
+      'As of 18 August 2022, much of the reported efforts to engineer better \
+      hemoproteins have not confirmed that the studied protein(s) have a good binding \
+      affinity to their cofactor, as compared to other hemoproteins. This is often \
+      outside the scope of those studies, but is of interest for optimizing the protein',
+  },
+  {
+    icon: IconDatabase,
+    title: 'Databases stored in S3',
+    description: 'AWS S3 easily connects to AWS Lambda and Gateway ',
   },
 ];
 
@@ -78,7 +96,7 @@ export function FeatureHeme() {
     <Container>
       {/* <Space h="sm" /> */}
 
-      <div className={classes.wrapper}>
+      <div className={classes.wrapper} id="featureHeme">
         <Grid gutter={80}>
           <Col span={12} md={5}>
             <Title className={classes.title} order={2}>
@@ -86,21 +104,23 @@ export function FeatureHeme() {
             </Title>
             <Text color="dimmed">
               Hemoproteins such as cytochrome P-450s have great potential in industrial catalysis,
-              environemntal remediation, and pharmaceutical production. Efforts to engineer more
+              environmental remediation, and pharmaceutical production. Efforts to engineer more
               efficient hemoproteins have not yet considered variability of individual hemoproteins'
               binding affinity to the heme cofactor, which may affect enzymatic turnover/reaction
               efficiency. Here I am determining if this is a valid concern and if ideal heme pocket
               configurations exist.
             </Text>
-
+            <Space h="xl" />
             <Button
-              variant="gradient"
-              gradient={{ deg: 133, from: 'blue', to: 'cyan' }}
+              component="a"
+              href="https://github.com/patimus-prime/"
               size="lg"
               radius="md"
-              mt="xl"
+              variant="default"
+              // className={classes.control}
+              leftIcon={<GithubIcon size={20} />}
             >
-              Get started
+              Git Repo
             </Button>
           </Col>
           <Col span={12} md={7}>

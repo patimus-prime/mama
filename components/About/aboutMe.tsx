@@ -112,16 +112,17 @@ export default function Pat() {
               }
             >
               <List.Item>
-                <b>TypeScript based</b> – build type safe applications, all components and hooks
-                export types
+                <b>Degrees</b> – I have a few Bachelor's in Chemical Engineering, Biochemistry, and
+                Molecular and Cellular Biology. Recently a Master's in Bioinformatics.
               </List.Item>
               <List.Item>
-                <b>Free and open source</b> – all packages have MIT license, you can use Mantine in
-                any project
+                <b>Pharma R&D</b> – Formulation falls right in the middle of the drug development
+                pipeline, so there was exposure to discovery, development and manufacturing of a
+                molecule and its formulation.
               </List.Item>
               <List.Item>
-                <b>No annoying focus ring</b> – focus ring will appear only when user navigates with
-                keyboard
+                <b>Computation</b> – There were a lot of interesting reports of ML applied to our
+                field.... too tired pat. FIXME
               </List.Item>
             </List>
 

@@ -4,6 +4,8 @@
 import { Grid, Text, Container, Title, Button, Space, createStyles } from '@mantine/core';
 import Image from 'next/image';
 import Smiles_Img from '../../public/sid_440144312.png';
+import Link from 'next/link';
+import { GithubIcon } from '@mantine/ds';
 // this function I think ultimately unnecessary; not included in DockTool
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -32,15 +34,37 @@ export function FeatureSmiles() {
           <Image src={Smiles_Img} alt={'sample2'} style={{ width: '100%', maxWidth: 360 }} />
         </Grid.Col>
         <Grid.Col xs={6} sm={8} md={8} lg={8}>
-          <div style={{ marginBottom: 20 }}>
-            <Text>
-              <Title order={1}>Put something here too</Title>
-              Dennis Farina is unique among thespians in that he was one of the few to achieve
-              success as a "late-bloomer." He did not start acting until he was 37 years old, after
-              stints in the military and 18 years on the Chicago Police Department.
+          <Space h="xl" />
+          <Space h="md" />
+
+          <div id="featureSmiles">
+            <Text align="right">
+              <Title>Smiles to L1</Title>
+              Given only a ligand SMILES code (produces a featureless structure as seen to the
+              left), predict that ligand's target protein L1 classification. The L1 classification
+              is extremely broad, e.g. 'Enzyme', 'Membrane Protein'. RDKit was used to generate
+              features about the molecule weight, polarity, etc. that were fed into machine learning
+              classification algorithms. This project was the result of a coding challenge.
+              {/* </Text> */}
+              {/* </div> */}
+              <Space h="xl" />
+              <Link
+                href="https://github.com/patimus-prime/proteinL1Prediction/blob/master/presentation_n.ipynb"
+                passHref
+              >
+                <Button
+                  component="a"
+                  size="md"
+                  radius="sm"
+                  variant="gradient"
+                  gradient={{ from: 'red', to: 'orange', deg: 45 }}
+                  leftIcon={<GithubIcon size={20} />}
+                >
+                  To Notebook
+                </Button>
+              </Link>
             </Text>
           </div>
-          <Button color="yellow">Tell me more</Button>
         </Grid.Col>
       </Grid>
     </Container>
