@@ -31,21 +31,42 @@ export function SherlockGrid() {
 
       <Grid>
         <Grid.Col md={6} lg={6}>
-          <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Image src="/sherb_paris.jpg" alt={''} />
-          </div>
+          {/* REGRETTABLY NEXTJS REQUIRES ANAL DEFINITION OF PIXELS */}
+          {/* SO IMG -> PROPERTIES IN BROWSER, THEN JUST SCALE LIKE BELOW, / 2 */}
+          <Image
+            src="/sherb_paris.jpg"
+            alt={''}
+            width={650 / 2}
+            height={870 / 2}
+
+            // fill
+            // width=fill
+            // height="auto"
+            // marginLeft="auto"
+            // marginRight="auto"
+            // style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}
+          />
         </Grid.Col>
 
         <Grid.Col md={6} lg={6}>
-          <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Image src="/sherb_path.jpg" alt={''} />
-          </div>
+          <Image
+            src="/sherb_path.jpg"
+            alt={''}
+            width={1250 / 2}
+            height={930 / 2}
+            // fill
+            // style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}
+          />
 
           <Space h="md" />
 
-          <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Image src="/sherb_sleepy.jpg" alt={''} />
-          </div>
+          <Image
+            src="/sherb_sleepy.jpg"
+            alt={''}
+            width={1111 / 2}
+            height={830 / 2}
+            // style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}
+          />
         </Grid.Col>
       </Grid>
     </Container>
