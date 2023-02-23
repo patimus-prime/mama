@@ -1,10 +1,7 @@
 import { createStyles, Container, Title, Text, List, ThemeIcon } from '@mantine/core';
-
 import Image from 'next/image';
-
 import { IconPaw } from '@tabler/icons';
-
-import ProfSherlock from '../../public/sherlock_prof.jpg';
+// import ProfSherlock from '../../public/sherlock_prof.jpg';
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -104,7 +101,7 @@ export default function Pat() {
             </List>
           </div>
 
-          <Image src={ProfSherlock} />
+          <Image src="sherlock_prof.jpg" alt={''} />
         </div>
       </Container>
     </div>

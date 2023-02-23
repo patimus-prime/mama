@@ -3,10 +3,13 @@ import { Container, Grid, Text, Title, Space } from '@mantine/core';
 // https://github.com/mantinedev/mantine/discussions/719
 
 import Image from 'next/image';
-
-import SherbParis from '../../public/sherb_paris.jpg';
-import SherbSleepy from '../../public/sherb_sleepy.jpg';
-import SherbPath from '../../public/sherb_path.jpg';
+// BETWEEN AUG 2022 AND FEB 2023, SOME UPDATE...?
+// ANYWAY, WE CAN EASILY REFERENCE PUBLIC FOLDER FILES VIA /FILE. DONE.
+// import SherbParis from '../../public/sherb_paris.jpg';
+// or not? just use file path in the ref?
+// import SherbParis from '/sherb_paris.jpg';
+// import SherbSleepy from '/sherb_sleepy.jpg';
+// import SherbPath from '/sherb_path.jpg';
 
 export function SherlockGrid() {
   return (
@@ -29,19 +32,19 @@ export function SherlockGrid() {
       <Grid>
         <Grid.Col md={6} lg={6}>
           <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Image src={SherbParis} />
+            <Image src="/sherb_paris.jpg" alt={''} />
           </div>
         </Grid.Col>
 
         <Grid.Col md={6} lg={6}>
           <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Image src={SherbPath} />
+            <Image src="/sherb_path.jpg" alt={''} />
           </div>
 
           <Space h="md" />
 
           <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Image src={SherbSleepy} />
+            <Image src="/sherb_sleepy.jpg" alt={''} />
           </div>
         </Grid.Col>
       </Grid>

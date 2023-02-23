@@ -3,9 +3,9 @@
 
 import { Grid, Text, Container, Title, Button, Space, createStyles } from '@mantine/core';
 import Image from 'next/image';
-import Smiles_Img from '../../public/sid_440144312.png';
 import Link from 'next/link';
 import { GithubIcon } from '@mantine/ds';
+import Smiles_Img from '../../public/sid_440144312.png';
 // this function I think ultimately unnecessary; not included in DockTool
 const useStyles = createStyles((theme) => ({
   wrapper: {

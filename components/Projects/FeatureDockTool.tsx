@@ -1,15 +1,12 @@
 // Layout for smiles/docking tool based on:
 // https://github.com/Giuseppetm/mantine-template/blob/main/src/Components/SectionThree.tsx
-
+import Link from 'next/link';
 import { Grid, Text, Container, Title, Button, Space } from '@mantine/core';
 import Image from 'next/image';
 import React from 'react';
 import { Router, Routes, Route } from 'react-router-dom';
-
 import Smiles_Img from './pics/sherb_sleepy.jpg';
 import Construction_Img from '../../public/pat_construction.gif';
-
-import Link from 'next/link';
 
 export function FeatureDockTool() {
   return (

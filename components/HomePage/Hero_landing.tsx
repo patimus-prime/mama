@@ -94,7 +94,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function Hero_Landing() {
+export function HeroLanding() {
   const { classes, cx } = useStyles();
   const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({});
 

@@ -21,7 +21,7 @@ import React from 'react';
 import { useHref } from 'react-router-dom';
 import { resolveHref } from 'next/dist/shared/lib/router/router';
 
-import { ColorSchemeToggle } from '../../components/ColorSchemeToggle/ColorSchemeToggle';
+import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -91,41 +91,45 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
+  // legacyBehavior below to support <Link> and child <a> tag
+  // this is mantine's setup, so, trying to keep it as is in case this fucks more up
   const items = links.map((link) => (
-    <Link href={link.link} passHref>
-      <a
-        key={link.label}
-        // href={link.link}
-        className={cx(classes.link, {
-          [classes.linkActive]: active === link.link,
-        })}
+    <Link
+      href={link.link}
+      passHref
+      key={link.label}
+      // href={link.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: active === link.link,
+      })}
 
-        // Comment out ability to update 'Active'; link.label kept below though.
+      // Comment out ability to update 'Active'; link.label kept below though.
 
-        // onClick={(event) => {
-        //   event.preventDefault();
-        //   setActive(href); //link.link returns string, therefore need href as string
-        // }}
-      >
-        {link.label}
-        {/* // link.label is what must be styled!
+      // onClick={(event) => {
+      //   event.preventDefault();
+      //   setActive(href); //link.link returns string, therefore need href as string
+      // }}
+    >
+      {link.label}
+      {/* // link.label is what must be styled!
       <Link href={link.link}>
         {link.label} 
         </Link>
 
       //  */}
-      </a>
+      {/* </a> */}
     </Link>
   ));
 
   return (
-    <Header height={60} mb={120}>
+    <Header suppressHydrationWarning height={60} mb={120}>
       <Container className={classes.header}>
         {/* <MantineLogo size={28} /> */}
         {/* ADD OTHER PAGES/DROP DOWNS HERE: */}
 
         <Group spacing={5} className={classes.links}>
-          <ColorSchemeToggle />
+          {/* Disabled due to hydration issues 23 Feb 2023 */}
+          {/* <ColorSchemeToggle /> */}
           <Space w="md" />
           {items}
         </Group>

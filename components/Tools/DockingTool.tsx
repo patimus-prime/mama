@@ -1,15 +1,12 @@
 import { Container, Grid, Space, Button } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons';
+import { useQuery, gql } from '@apollo/client';
 import { CheckboxCard } from '../dependencies/Checkbox';
 import { DropzoneButton } from '../dependencies/Dropzone';
 import { InputEmail } from '../dependencies/inputsDockingTool/InputEmail';
 import { InputLigand } from '../dependencies/inputsDockingTool/InputLigand';
 import { InputPDB } from '../dependencies/inputsDockingTool/InputPDB';
 // import Molstar from 'molstar-react';
-
-import { useQuery, gql } from '@apollo/client';
-import { access } from 'fs';
-
 // so, the query here is connected directly to our mongodb cluster. one is not limited
 // to one collection, we can specify any one of 'em
 
@@ -100,7 +97,7 @@ export function DockingTool() {
   }
 
   if (error) {
-    console.error(error);
+    // console.error(error); // not sure if this is necessary
     return <h2>DATA LOAD FAILURE. TELL YOUR BOSS/CRY</h2>;
   }
   // const countries = data.countries.slice(0, 4);

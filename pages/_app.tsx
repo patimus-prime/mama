@@ -1,19 +1,15 @@
 import { GetServerSidePropsContext } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AppProps } from 'next/app';
 import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
-import { NavBarSimple } from '../components/Navigation/NavBarSimple';
-import { NavbarNested } from '../components/dependencies/NavBarNested';
+import { ApolloProvider } from '@apollo/client';
+import client from '../apollo-client';
 import AppShellNested from '../components/Navigation/AppShell';
 import { HeaderSimple } from '../components/Navigation/HeaderSimple';
-import * as Realm from 'realm-web';
 
-import client from '../apollo-client';
-
-import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
@@ -21,6 +17,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   // This is the button! The initial props are given at the bottom of this .tsx
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
+    // const nextColorScheme = value || [colorScheme[] = useState('dark'))
     setColorScheme(nextColorScheme);
     setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
   };
@@ -33,7 +30,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
         <link rel="shortcut icon" href="/baticon.svg" />
       </Head>
 
-      <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
+      <ColorSchemeProvider colorScheme="dark" toggleColorScheme={toggleColorScheme}>
         <MantineProvider theme={{ colorScheme }} withGlobalStyles withNormalizeCSS>
           <AppShell
             padding="md"

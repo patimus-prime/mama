@@ -100,17 +100,17 @@ export default function Pat() {
                 simulation tools, e.g. Chimera, RDKit, Rosetta and AutoDock Vina
               </List.Item>
               <List.Item>
-                <b>Machine Learning</b> – I've had, or created the opportunity to work on several
-                projects building machine learning models for different applications.
+                <b>Machine Learning</b> – I've had the opportunity to work on several projects
+                building machine learning models for different applications.
               </List.Item>
               <List.Item>
                 <b>Wet-lab</b> – Before my Master's, I worked for 2 years in antibody formulation
                 development
               </List.Item>
               <List.Item>
-                <b>Bringing it all together</b> – I've enjoyed having several projects where one had
-                to consider and integrate the science, the coding/modeling, and the significance,
-                the translation of the results to real-world applications.
+                <b>Bringing it all together</b> – I have enjoyed having several projects where one
+                had to consider and integrate the science, the coding/modeling, and the
+                significance, the translation of the results to real-world applications.
               </List.Item>
             </List>
 
@@ -127,8 +127,8 @@ export default function Pat() {
               }
             >
               <List.Item>
-                I too enjoy spicy food. It's like a delicious, purifying sauna: all the sweat and
-                tears leaving my body as I nourish it.
+                I too enjoy spicy food... like a delicious, purifying sauna: all the sweat and tears
+                leaving my body as I nourish it.
               </List.Item>
             </List>
 
@@ -160,7 +160,7 @@ export default function Pat() {
             </Group>
           </div>
 
-          <Image src={Pinhead} />
+          <Image src="/pinhead.gif" alt={''} />
         </div>
       </Container>
     </div>

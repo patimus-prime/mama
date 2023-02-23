@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { createStyles, Header, Group, ActionIcon, Container, Burger } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { IconBat, IconBrandLinkedin, IconBrandGithub } from '@tabler/icons';
+import Link from 'next/link';
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -73,9 +74,11 @@ export function HeaderMiddle({ links }: HeaderMiddleProps) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
-      key={link.label}
+    <Link
       href={link.link}
+      passHref
+      key={link.label}
+      // href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
       onClick={(event) => {
         event.preventDefault();
@@ -83,11 +86,12 @@ export function HeaderMiddle({ links }: HeaderMiddleProps) {
       }}
     >
       {link.label}
-    </a>
+      {/* </a> */}
+    </Link>
   ));
 
   return (
-    <Header height={56} mb={120}>
+    <Header suppressHydrationWarning height={56} mb={120}>
       <Container className={classes.inner}>
         <Burger opened={opened} onClick={toggle} size="sm" className={classes.burger} />
         <Group className={classes.links} spacing={5}>

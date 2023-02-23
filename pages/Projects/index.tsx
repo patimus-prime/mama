@@ -1,10 +1,10 @@
 // BIG NOTE: BC THIS IS INDEX.TSX IN PROJECTS FOLDER, WILL RENDER AT /projects/
+import { Space, Text, Button } from '@mantine/core';
+import Link from 'next/link';
 
 import { FeatureDockTool } from '../../components/Projects/FeatureDockTool';
 import { FeatureHeme } from '../../components/Projects/FeatureHeme';
 import { FeatureSmiles } from '../../components/Projects/FeatureSmiles';
-import { Space, Text, Button } from '@mantine/core';
-import Link from 'next/link';
 
 export default function AllProjects() {
   return (

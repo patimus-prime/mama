@@ -31,27 +31,6 @@ export default function AppShellNested() {
       fixed
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
-      // navbar={
-      // <NavbarNested />
-      // <NavBarSimple />
-      // <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-      //   <Text>Application navbar</Text>
-      // </Navbar>
-      // }
-      // aside={
-      //   <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
-      //     <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
-      //       <Text>Application sidebar</Text>
-      //     </Aside>
-      //   </MediaQuery>
-      // }
-
-      // footer={
-      //   <Footer height={60} p="md">
-      //     Application footer
-      //   </Footer>
-      // }
-
       header={
         <HeaderSimple
           links={[
@@ -59,7 +38,28 @@ export default function AppShellNested() {
             { label: 'Projects', link: '/Projects' },
           ]}
         />
+        // From above:
+        // navbar={
+        // <NavbarNested />
+        // <NavBarSimple />
+        // <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
+        //   <Text>Application navbar</Text>
+        // </Navbar>
+        // }
+        // aside={
+        //   <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+        //     <Aside p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+        //       <Text>Application sidebar</Text>
+        //     </Aside>
+        //   </MediaQuery>
+        // }
 
+        // footer={
+        //   <Footer height={60} p="md">
+        //     Application footer
+        //   </Footer>
+        // }
+        // RESUME OTHER COMMENTS
         // <Header height={70} p="md">
         //   <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
         //     <MediaQuery largerThan="sm" styles={{ display: 'none' }}>

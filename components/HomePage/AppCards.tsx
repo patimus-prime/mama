@@ -1,6 +1,6 @@
+import Link from 'next/link';
 import { Container, Grid, Text, Title, Space, Button } from '@mantine/core';
 import { BadgeCard } from '../dependencies/BadgeCard';
-import Link from 'next/link';
 
 export function AppCardsSection() {
   return (
