@@ -9,10 +9,16 @@ import { NavBarSimple } from '../components/Navigation/NavBarSimple';
 import { NavbarNested } from '../components/dependencies/NavBarNested';
 import AppShellNested from '../components/Navigation/AppShell';
 import { HeaderSimple } from '../components/Navigation/HeaderSimple';
+import * as Realm from 'realm-web';
+
+import client from '../apollo-client';
+
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   const { Component, pageProps } = props;
   const [colorScheme, setColorScheme] = useState<ColorScheme>(props.colorScheme);
 
+  // This is the button! The initial props are given at the bottom of this .tsx
   const toggleColorScheme = (value?: ColorScheme) => {
     const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
     setColorScheme(nextColorScheme);
@@ -52,7 +58,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             })}
           >
             <NotificationsProvider>
-              <Component {...pageProps} />
+              <ApolloProvider client={client}>
+                <Component {...pageProps} />
+              </ApolloProvider>
             </NotificationsProvider>
           </AppShell>
         </MantineProvider>
@@ -61,6 +69,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   );
 }
 
+// sets initial props to be dark, then they can click on it for light if they really want
 App.getInitialProps = ({ ctx }: { ctx: GetServerSidePropsContext }) => ({
-  colorScheme: getCookie('mantine-color-scheme', ctx) || 'light',
+  colorScheme: getCookie('mantine-color-scheme', ctx) || 'dark',
 });

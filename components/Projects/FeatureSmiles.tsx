@@ -44,12 +44,12 @@ export function FeatureSmiles() {
               left), predict that ligand's target protein L1 classification. The L1 classification
               is extremely broad, e.g. 'Enzyme', 'Membrane Protein'. RDKit was used to generate
               features about the molecule weight, polarity, etc. that were fed into machine learning
-              classification algorithms. This project was the result of a coding challenge.
+              classification algorithms.
               {/* </Text> */}
               {/* </div> */}
               <Space h="xl" />
               <Link
-                href="https://github.com/patimus-prime/proteinL1Prediction/blob/master/presentation_n.ipynb"
+                href="https://github.com/patimus-prime/ML_notebooks/blob/master/SMILES_2_0.ipynb"
                 passHref
               >
                 <Button

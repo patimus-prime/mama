@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Container, Text, Space } from '@mantine/core';
 import patConstruction from '../../public/pat_construction.gif';
 import { DockingTool } from '../../components/Tools/DockingTool';
+import ClientOnlyWrapper from '../../components//ClientOnlyWrapper';
 
 export default function AllTools() {
   return (
@@ -16,7 +17,9 @@ export default function AllTools() {
         <Space h="md" />
         ... Head over to Home or Projects to see some other projects that are complete!
       </Text>
-      <DockingTool />
+      <ClientOnlyWrapper>
+        <DockingTool />
+      </ClientOnlyWrapper>
     </div>
   );
 }

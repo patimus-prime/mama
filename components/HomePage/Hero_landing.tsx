@@ -114,9 +114,11 @@ export function Hero_Landing() {
           <Text size="lg" className={classes.description}>
             Including the best website – but unfortunately he has to share it with me.
             <Space h="xl" />
-            Below are some brief overviews of my projects. And pictures of my dog. My LinkedIn and
-            the source code are also available by clicking the buttons here. ... Or you can just go
-            straight to his pictures.
+            <Space h="xl" />
+            <Space h="xl" />I worked for 2 years in pharma R&D, see my LinkedIn for details there.
+            Below are some brief overviews of my computational projects/investigations. And pictures
+            of my dog. My LinkedIn and the source code are also available by clicking the buttons
+            here... or you can just go straight to his pictures.
           </Text>
         </Container>
 
