@@ -37,20 +37,37 @@ const useStyles = createStyles((theme, { floating }: { floating: boolean }) => (
     },
   },
 }));
+// Enforce types via interface/props
+interface InputPDBProps {
+  onChange: (value: string) => void;
+}
 
-export function InputPDB() {
+export function InputPDB(props: InputPDBProps) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState('');
   const { classes } = useStyles({ floating: value.trim().length !== 0 || focused });
 
+  // function handle when the input changes
+  // uses react event hook to get the value of the input :)
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // more succinct without temp variable:
+    setValue(event.currentTarget.value);
+    props.onChange(event.currentTarget.value);
+    // const newValue = event.currentTarget.value;
+    // setValue(newValue);
+    // props.onChange(newValue);
+  };
+
+  // what user actually sees
   return (
     <TextInput
-      label="Input PDB code, or upload to the right"
+      label="Input PDB code, or LEAVE BLANK and upload to the right"
       placeholder="e.g. 1W0E"
-      required
+      // required
       classNames={classes}
       value={value}
-      onChange={(event) => setValue(event.currentTarget.value)}
+      // onChange={(event) => setValue(event.currentTarget.value)}
+      onChange={handleChange} // call handleChange, better implementation
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       mt="md"

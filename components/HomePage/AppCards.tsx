@@ -19,6 +19,30 @@ export function AppCardsSection() {
       <Grid>
         <Grid.Col md={6} lg={3}>
           <BadgeCard
+            image="https://th.bing.com/th/id/OIP.D9gV4a2gyZ_zTucWxDMdjAHaEK?w=308&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+            title={'Abstract Summarization and Recommendation'}
+            date="March 2023"
+            description={
+              'Recommend abstracts with highest cosine similairty, and summarize \
+              at the technical and lay level using Chat-GPT. Pulls works and authors from \
+              OpenAlex, populates SQL database with abstracts, ML/Chat to ID match based on user input.'
+            }
+            projectDetails={'/Tools/chatAbstracts'}
+            projectRepo={
+              'https://github.com/patimus-prime/ML_notebooks/blob/master/sci_pub_db_builder.ipynb'
+            }
+            badges={[
+              { emoji: '🐍', label: 'Python' },
+              { emoji: '🤖', label: 'Chat-GPT, PyTorch, NLP' },
+              { emoji: '📚', label: 'OpenAlex' },
+              { emoji: '☁️', label: 'SQL' },
+              { emoji: '🪐', label: 'Google Colab/Jupyter' },
+            ]}
+          ></BadgeCard>
+        </Grid.Col>
+
+        <Grid.Col md={6} lg={3}>
+          <BadgeCard
             image="https://th.bing.com/th/id/OIP.qgte16NEQbBdKZsoV5aNSwHaE5?pid=ImgDet&rs=1"
             title={'Statistical Analysis/Candidate Selection'}
             date=""
@@ -46,7 +70,7 @@ export function AppCardsSection() {
           <BadgeCard
             image="http://bio1151.nicerweb.com/Locked/media/ch08/08_13HydrolysisOfSucrose.jpg"
             title={'Preliminary work on rare genetic disease'}
-            date=""
+            date="February 2023"
             description={
               'Looking through the gnomAD genetic database, it is suggested \
               the population prevalence for CSID may be greater than expected, \
@@ -71,7 +95,7 @@ export function AppCardsSection() {
           <BadgeCard
             image="https://th.bing.com/th/id/R.24ab0afb82bad67a4c6660cc3ab0806c?rik=6lwn3W9veY96Zg&riu=http%3a%2f%2fwww.psychologytoday.com%2ffiles%2fu522%2fhappy+sad+faces.jpg&ehk=YNuSpHXNlYRDo16uEToC5Vf1X%2fOzh8lftvX5JSidvrs%3d&risl=&pid=ImgRaw&r=0"
             title={'SMILES Code to Target Class'}
-            date=""
+            date="July 2022; Updated Feb 2023"
             description={
               "Predicting a ligand's target protein class. \
             Machine learning models train on QSAR data generated from RDKit/Mordred."

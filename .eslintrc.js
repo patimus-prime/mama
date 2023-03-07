@@ -24,6 +24,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/no-unescaped-entities': 'off',
+    'react/no-unused-prop-types': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     'react/jsx-curly-brace-presence': 'off',
     'no-return-assign': 'off', // this one prob very dangerous
@@ -33,5 +34,6 @@ module.exports = {
     'import/no-duplicates': 'off',
     'react/jsx-boolean-value': 'off',
     'no-multi-str': 'off', // will screw pre-ES5 browsers... but keep the code tidy
+    'arrow-body-style': 'off',
   },
 };

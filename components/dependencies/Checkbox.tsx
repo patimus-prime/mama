@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { UnstyledButton, Checkbox, Text, createStyles } from '@mantine/core';
 import { useUncontrolled } from '@mantine/hooks';
 
@@ -19,39 +20,48 @@ const useStyles = createStyles((theme) => ({
 }));
 
 interface CheckboxCardProps {
-  checked?: boolean;
-  defaultChecked?: boolean;
+  // checked?: boolean;  // it wants these gone lol
+  // defaultChecked?: boolean; //
   onChange?(checked: boolean): void;
   title: React.ReactNode;
   description: React.ReactNode;
 }
 
 export function CheckboxCard({
-  checked,
-  defaultChecked,
+  // checked,
+  // defaultChecked,
   onChange,
   title,
   description,
-  className,
-  ...others
-}: CheckboxCardProps & Omit<React.ComponentPropsWithoutRef<'button'>, keyof CheckboxCardProps>) {
+}: // className,
+// ...others
+CheckboxCardProps & Omit<React.ComponentPropsWithoutRef<'button'>, keyof CheckboxCardProps>) {
   const { classes, cx } = useStyles();
+  const [checked, setChecked] = useState(false);
 
-  const [value, handleChange] = useUncontrolled({
-    value: checked,
-    defaultValue: defaultChecked,
-    finalValue: false,
-    onChange,
-  });
+  const handleChange = () => {
+    const newValue = !checked;
+    setChecked(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
+  };
+  // const [value, handleChange] = useUncontrolled({
+  //   value: checked,
+  //   defaultValue: defaultChecked,
+  //   finalValue: false,
+  //   onChange,
+  // });
 
   return (
     <UnstyledButton
-      {...others}
-      onClick={() => handleChange(!value)}
-      className={cx(classes.button, className)}
+      // {...others}
+      onClick={handleChange}
+      // onClick={() => handleChange(!value)}
+      className={cx(classes.button)}
     >
       <Checkbox
-        checked={value}
+        checked={checked}
         onChange={() => {}}
         tabIndex={-1}
         size="md"

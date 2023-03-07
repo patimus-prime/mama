@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Container, Grid, Space, Button } from '@mantine/core';
 import { IconChevronRight } from '@tabler/icons';
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, useMutation, gql } from '@apollo/client';
 import { CheckboxCard } from '../dependencies/Checkbox';
 import { DropzoneButton } from '../dependencies/Dropzone';
+import { PDBDropZone } from '../dependencies/PDBDropZone';
+import { LigandDropZone } from '../dependencies/LigandDropZone';
 import { InputEmail } from '../dependencies/inputsDockingTool/InputEmail';
 import { InputLigand } from '../dependencies/inputsDockingTool/InputLigand';
 import { InputPDB } from '../dependencies/inputsDockingTool/InputPDB';
@@ -10,15 +13,41 @@ import { InputPDB } from '../dependencies/inputsDockingTool/InputPDB';
 // so, the query here is connected directly to our mongodb cluster. one is not limited
 // to one collection, we can specify any one of 'em
 
-// do i need sample analytics?
+// do i need sample analytics? no, it's just to name the specific query
+// eg query queryName { blah blah blah }
 const QUERY = gql`
-  query {
+  query airBnBsampleQuery {
     listingsAndReview {
       _id
       bathrooms
       access
       accommodates
       access
+    }
+  }
+`;
+
+// this test query achieved from graphql playground
+// note that the arrays are not listed, there's no data
+const testQUERY = gql`
+  query {
+    test {
+      _id
+      boolConformations
+      boolMarcocycle
+      email
+      ligandCode
+      pdbCode
+      pdbFiles {
+        fileContents
+        fileName
+        type
+      }
+      moleculeFiles {
+        fileContents
+        fileName
+        type
+      }
     }
   }
 `;
@@ -37,6 +66,23 @@ interface ListingData {
   accommodates: number;
 }
 
+interface PdbOrMolecule {
+  fileName: string;
+  type: string;
+  fileContents: string;
+}
+
+// AND ALSO DECLARE FOR GRAPHQL THE SAME THING. data types are important:
+interface FormInputTypes {
+  pdbCode?: string;
+  ligandCode?: string;
+  email?: string;
+  boolConformations?: boolean;
+  boolMacrocycle?: boolean;
+  pdbFiles?: Array<PdbOrMolecule>;
+  moleculeFiles: Array<PdbOrMolecule>;
+}
+
 // and you'll see now that we use this 'ListingData' to tell typescript
 // exactly what the fuck a listing is
 // function Listing({ listing }: { listing: ListingData }) {
@@ -49,144 +95,208 @@ interface ListingData {
 //   );
 // }
 
-// INSTRUCTIONS FOR MOLSTAR INSTALLATION:
-// https://molstar.org/docs/
-// https://molstar.org/docs/plugin/
-// NEED TO DO: yarn add molstar
-// THEN: https://stackoverflow.com/questions/40498112/typescript-2-1-async-await-es5-awaiter-and-generator-is-generated-for-every
-// and yarn add tslib
-// and at tsconfig add importHelpers :)))
-// STILL BROKE
-// https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import
-//
-// import { Viewer } from 'molstar/lib/apps/viewer/app';
-// // import { Viewer } from 'molstar/build/viewer/molstar'
-
-// import { DefaultPluginUISpec, PluginUISpec } from 'molstar/lib/mol-plugin-ui/spec';
-// // import { createPluginAsync } from 'molstar/lib/mol-plugin-ui/index';
-// import { createPluginUI } from 'molstar/lib/mol-plugin-ui/index';
-
-// import { PluginConfig } from 'molstar/lib/mol-plugin/config';
-
-// const MySpec: PluginUISpec = {
-//   ...DefaultPluginUISpec(),
-//   config: [[PluginConfig.VolumeStreaming.Enabled, false]],
-// };
-
-// THIS DOES AS IT SAYS. ONLY CREATES THE PLUGIN HOMIE
-// and it's fucked up at that!
-// https://github.com/molstar/molstar/blob/master/CHANGELOG.md
-// 2021-12-19
-// async function createPlugin(parent: HTMLElement) {
-//   const plugin = await createPluginUI(parent, MySpec);
-
-//   const data = await plugin.builders.data.download({ url: '...' }, { state: { isGhost: true } });
-//   const trajectory = await plugin.builders.structure.parseTrajectory(data, format);
-//   await this.plugin.builders.structure.hierarchy.applyPreset(trajectory, 'default');
-
-//   return plugin;
-// }
-
-// createPlugin(document.getElementById('app')!); // app is a <div> element
+function SuccessMessage() {
+  return (
+    <div>
+      <p>Your form has been submitted successfully!</p>
+    </div>
+  );
+}
 
 export function DockingTool() {
-  const { data, loading, error } = useQuery(QUERY);
-  // THIS IS WORKING. SO. IT IS AN ISSUE WITH OUR QUERY OR WITH HOW THE DATA IS BEING DISPALYED
-  if (loading) {
-    return <h2>FIRMLY GRASP IT...</h2>;
-  }
+  // handle queries
+  // const { data, loading, error } = useQuery(QUERY);
+  // handle fields update; these all get uploaded as one object via graphQL
+  // note right side is default value, updated upon change
+  const [pdbCode, setPdbCode] = useState('');
+  const [ligandCode, setLigandCode] = useState('');
+  const [email, setEmail] = useState('');
+  const [boolConformations, setBoolConformations] = useState(false);
+  const [boolMacrocycle, setBoolMacrocycle] = useState(false);
+  // for the potential pdbs/mols etc. uploaded
+  const [pdbFiles, setPdbFiles] = useState<string[]>([]);
+  const [moleculeFiles, setMoleculeFiles] = useState<string[]>([]);
+  // for to render some nice logic
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [serverUploadMessage, setServerUploadMessage] = useState('');
 
-  if (error) {
-    // console.error(error); // not sure if this is necessary
-    return <h2>DATA LOAD FAILURE. TELL YOUR BOSS/CRY</h2>;
-  }
-  // const countries = data.countries.slice(0, 4);
-  // const sampleData = data.account.slice(0, 4);
+  // AND DECLARE THE FORM TO USE ALL THESE FIELDS I'VE JUST DEFINED ABOVE:
+  // advise to have some sample/placerholder for the arrays...
+  const [formData, setFormData] = useState({
+    pdbCode: '',
+    ligandCode: '',
+    email: '',
+    boolConformations: false,
+    boolMacrocycle: false,
+    pdbFiles: [],
+    moleculeFiles: [],
+  });
+
+  // define the mutation to use based on the formData to insert into the db
+  const SUBMIT_MUTATION = gql`
+    mutation submitFormMutation($input: FormInputTypes!) {
+      submitForm(input: $input) {
+        serverResponse
+      }
+    }
+  `;
+
+  // handle submission of our whole freaking form
+  // add async to the function declaration, so we can wait for the mutation to finish
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    // for debugging purposes
+    // console.log('Submission successful!');
+    event.preventDefault();
+
+    // FIXME: ADD COMPONENT TO DISPLAY THE DATA/SHOW THE USER THAT IT WORKED
+
+    // declare submitForm function that employs our useMutation
+    const [submitForm] = useMutation(SUBMIT_MUTATION);
+    // this omits the state object(s) from useMutation fn, verbose form w useless variables is:
+    // const [submitForm, { data, loading, error }] = useMutation(SUBMIT_MUTATION);
+
+    // Call the mutation with the form data
+    // our form data should of been updated with all our components calling
+    // their onChange functions to update the formData state
+    try {
+      //  'data' is actually the server response from the mutation
+      // is named data cuz look above to hidden state variables
+      const { data } = await submitForm({ variables: { input: formData } });
+      console.log(data);
+      // setServerUploadMessage(data);
+      // data will inform if this was a success or not, if it was...
+      setFormSubmitted(true); //update formSubmitted state to true, use to render success component
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // const handleSubmit = async () => {
+  //   try {
+  //     // call the mutation function with the form data as an argument
+  //     await submitFormMutation({
+  //       variables: {
+  //         input: formData,
+  //       },
+  //     });
+
+  //     // update state variables to show success message
+  //     setFormSubmitted(true);
+  //     setServerUploadMessage('Form submitted successfully!');
+  //   } catch (error) {
+  //     console.error(error);
+  //     setServerUploadMessage('Something went wrong while submitting the form.');
+  //   }
+  // };
+
+  // use the mutation hook to call the mutation
+  const [submitFormMutation] = useMutation(SUBMIT_MUTATION);
 
   return (
     <Container>
-      {/* <script
-        type="text/javascript"
-        src="https://www.ebi.ac.uk/pdbe/pdb-component-library/js/pdbe-molstar-plugin-3.1.0.js"
-      ></script>
-      <script>var viewerInstance = new PDBeMolstarPlugin();</script> */}
-      {/* <div>
-        <Molstar pdbId="1LOL" />
-      </div> */}
-
+      <Space h="xl" />
       <div>
-        GraphQL is outputting here. THIS IS STILL INCOMPLETE/TESTING AND IS NOT WORKING
-        {/* in this case each listing can be accessed by placeholder/ref var 'item' */}
-        {/* {data &&
-          data.listingsAndReview.map((listing: ListingData) => (
-            <Listing key={listing._id} listing={listing} />
-          ))} */}
-        {/* if all else fails, ehre's something: {data} */}
-        <div>
-          <pre>{JSON.stringify(data, null, 2)}</pre>
-        </div>
-        {/* {data.listingsAndReview.map((item: ListingData) => (
-          // <Listing key={listing._id} listing={listing} />
+        <form onSubmit={handleSubmit}>
+          <Grid>
+            <Grid.Col md={6} lg={6}>
+              <div>
+                {/* style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}> */}
+                <h4>Specify PDB/options for docking</h4>
+                <InputPDB
+                  onChange={(value) => {
+                    setPdbCode(value); // this updates pdbCode (but does not inform formData of the change.)
+                    // leaving setPdbCode in here in case we use it elsewhere, like confirming what was submitted etc.
+                    setFormData({ ...formData, pdbCode: value });
+                  }}
+                />
 
-          <h2 key={item._id}>
-            Access: {item.access}
-            Bathrooms: {item.bathrooms}
-            Accomodates: {item.accommodates}
-          </h2>
-        ))} */}
-        {/* {sampleData.map(() => (
-          account.id
-        ))} */}
+                <Space h="sm" />
+                <InputLigand
+                  onChange={(value) => {
+                    setLigandCode(value);
+                    setFormData({ ...formData, ligandCode: value });
+                  }}
+                />
+
+                <Space h="sm" />
+                <InputEmail
+                  onChange={(value) => {
+                    setEmail(value);
+                    setFormData({ ...formData, email: value });
+                  }}
+                />
+                <Space h="md" />
+                <CheckboxCard
+                  onChange={(value) => {
+                    setBoolConformations(value);
+                    setFormData({ ...formData, boolConformations: value });
+                  }}
+                  title={'Conformational sampling?'}
+                  description={'FIXME: make this smaller and also add slider for # of conforms'}
+                />
+                <Space h="md" />
+                <CheckboxCard
+                  onChange={(value) => {
+                    setBoolMacrocycle(value);
+                    setFormData({ ...formData, boolMacrocycle: value });
+                  }}
+                  title={'Macrocycle ligand?'}
+                  description={'Employ Meeko package to generate macrocycle conforms'}
+                />
+
+                <Space h="lg" />
+                <Button
+                  component="a"
+                  // href="#sherbID" //made obsolete by the below scroll. wow so ez v. refs and stuff
+                  size="xl"
+                  radius="xl"
+                  variant="gradient"
+                  gradient={{ from: 'green', to: 'yellow', deg: 45 }}
+                  leftIcon={<IconChevronRight size={20} />}
+                  // type submit should inform <form> that it's time to handleSubmit
+                  type="submit" // this is the button type, set to submit the whole shebang
+                  // onClick={handleSubmit}
+                >
+                  Submit!
+                </Button>
+              </div>
+            </Grid.Col>
+            <Grid.Col md={6} lg={6}>
+              <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
+                <Space h={40} />
+                <PDBDropZone onPdbContentsChange={setPdbFiles} />
+                <LigandDropZone onLigandContentsChange={setMoleculeFiles} />
+                {/* <DropzoneButton /> */}
+              </div>
+            </Grid.Col>
+          </Grid>
+        </form>
       </div>
-      <Space h="xl" />
-      <Space h="xl" />
-      <Space h="xl" />
-      <Space h="xl" />
-      <Grid>
-        <Grid.Col md={6} lg={6}>
-          <div>
-            {/* style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}> */}
-            <h4>Specify PDB/options for docking</h4>
-            <InputPDB />
+      {/* RENDER SUCCESS MESSAGE, submission compelte! null if formSubmitted is False */}
+      {formSubmitted && <SuccessMessage />}
 
-            <Space h="sm" />
-            <InputLigand />
+      {serverUploadMessage && <div>{serverUploadMessage}</div>}
+      {/* <pre>{serverUploadMessage}</pre>
+      {formSubmitted && <SuccessMessage />}
+      {formSubmitted ? <p>submission complete!</p> : null} */}
 
-            <Space h="sm" />
-            <InputEmail />
-            <Space h="md" />
-            <CheckboxCard
-              title={'Conformational sampling?'}
-              description={'FIXME: make this smaller and also add slider for # of conforms'}
-            />
-            <Space h="md" />
-            <CheckboxCard
-              title={'Macrocycle ligand?'}
-              description={'Employ Meeko package to generate macrocycle conforms'}
-            />
-
-            <Space h="lg" />
-            <Button
-              component="a"
-              // href="#sherbID" //made obsolete by the below scroll. wow so ez v. refs and stuff
-              size="xl"
-              radius="xl"
-              variant="gradient"
-              gradient={{ from: 'green', to: 'yellow', deg: 45 }}
-              leftIcon={<IconChevronRight size={20} />}
-            >
-              Submit (Does nothing atm)
-            </Button>
-          </div>
-        </Grid.Col>
-
-        <Grid.Col md={6} lg={6}>
-          <div style={{ width: 360, marginLeft: 'auto', marginRight: 'auto' }}>
-            <Space h={40} />
-            <DropzoneButton />
-          </div>
-        </Grid.Col>
-      </Grid>
+      {/* TO DATA SECTION */}
+      <Space h="xl" />
+      <Button
+        component="a"
+        href="/Tools/dockingData"
+        size="xl"
+        radius="xl"
+        variant="gradient"
+        gradient={{ from: 'yellow', to: 'red', deg: 45 }}
+        leftIcon={<IconChevronRight size={20} />}
+        // type submit should inform <form> that it's time to handleSubmit
+        // type="submit" // this is the button type, set to submit the whole shebang
+        // onClick={handleSubmit}
+      >
+        GO TO DATA VISUALIZATION
+      </Button>
     </Container>
   );
 }

@@ -38,11 +38,19 @@ const useStyles = createStyles((theme, { floating }: { floating: boolean }) => (
   },
 }));
 
-export function InputEmail() {
+interface InputEmailProps {
+  onChange: (value: string) => void;
+}
+
+export function InputEmail(props: InputEmailProps) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState('');
   const { classes } = useStyles({ floating: value.trim().length !== 0 || focused });
-
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.currentTarget.value;
+    setValue(newValue);
+    props.onChange(newValue);
+  };
   return (
     <TextInput
       label="Input email to notify when job complete"
@@ -50,7 +58,7 @@ export function InputEmail() {
       required
       classNames={classes}
       value={value}
-      onChange={(event) => setValue(event.currentTarget.value)}
+      onChange={handleChange}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       mt="md"
