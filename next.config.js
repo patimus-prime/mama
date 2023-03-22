@@ -10,6 +10,17 @@ module.exports = withBundleAnalyzer({
 });
 
 module.exports = {
+  // env variables; specify in .env.local (also .git.ignore'd)
+  // and then copy name of those variables into these exports...
+  // BIG NOTE!!! ALSO IMPORT .ENV.LOCAL TO VERCEL ENVIRONMENT VARIABLES
+  // GO ONLINE ETC. AND DO THAT. SO 3 PLACES YOU GOTTA SPECIFY SHIT
+  env: {
+    // API_URL: process.env.API_URL || 'http://localhost:3000/api',
+    PGHOST: process.env.PGHOST,
+    PGUSER: process.env.PGUSER,
+    PGPASSWORD: process.env.PGPASSWORD,
+  },
+
   // THIS IS VERY DANGEROUS!!!!!! ***I ADDED THIS TO GET IT TO BUILD***
   // NEED AN ADULT. THIS WAS ADDED CURRENT DATE: 23-FEB-2023
   typescript: {
