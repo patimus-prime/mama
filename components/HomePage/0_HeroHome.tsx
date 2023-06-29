@@ -105,25 +105,26 @@ export function HeroHome() {
             {/* <Grid.Col md={8}> */}
             <div className={classes.inner}>
                 <Title className={classes.title}>
-                    My dog deserves the{' '}
+                    {/* Welcome */}
+                    {/* My dog deserves the{' '} */}
                     <Text component="span" inherit className={classes.highlight}>
-                        best
+                        Welcome!
                     </Text>
                 </Title>
 
                 <Container size={640}>
                     <Text size="lg" className={classes.description}>
-                        Including the best website – but unfortunately he has to share it with me.
-                        <Space h="xl" />
-                        <Space h="xl" />
-                        <Space h="xl" />
+                        {/* Including the best website – but unfortunately he has to share it with me.
+                        <Space h="xl" /> */}
+                        {/* <Space h="xl" /> */}
+                        {/* <Space h="xl" /> */}
 
-                        Welcome! I'm a lot of things: a formulation and computational chemist,
+                        Welcome! ¡Bienvenidos! I'm a lot of things: a formulation and computational chemist,
                         chemical and software engineer, but mostly I brag about my dog.
                         <Space h="xl" />
 
-                        I worked for 2 years in pharma R&D, went to get my Master's, got obssessed with
-                        a project, and now, here we are (2023). My portfolio and several tools are below. And
+                        I worked for 2 years in pharma R&D, went to get my Master's, started researching
+                        a rare genetic disease, and now, here we are (2023). My portfolio and several tools are below. And
                         pictures of my dog.
                     </Text>
                 </Container>
