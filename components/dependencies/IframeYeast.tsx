@@ -59,7 +59,12 @@ export function IframeYeast() {
             {/* <Link href="/Tools" passHref> */}
             <Button
               component={Link}
-              href="https://huggingface.co/spaces/patimus-prime/strain_selection"
+              // href="https://huggingface.co/spaces/patimus-prime/strain_selection"
+              // HF space is annoying with light area; this is all dark mode on streamlit
+              // regrettably tho requires /~/+/ to avoid being redirected forever
+              // per https://github.com/streamlit/streamlit/issues/5084
+              // additional advantage of can use github repo to manage 
+              href="https://strainselection.streamlit.app/"
               size="md"
               radius="sm"
               variant="gradient"
@@ -73,13 +78,15 @@ export function IframeYeast() {
         <Grid.Col xs={6} sm={4} md={4} lg={4}
         >
           {/* <Image src={'/pinhead.gif'} alt={'sample2'} height={100} width={100} /> */}
+
+
+          {/* If using Streamlit to host, and using iframe, need to add the below *app/~?/+/* where * is remainder left or right */}
+          {/* per; https://github.com/streamlit/streamlit/issues/5084 */}
+          {/* https://strainselection.streamlit.app/?embed_options=dark_theme,show_footer,show_colored_line,show_toolbar */}
+          {/* https://strainselection.streamlit.app/?embed_options=dark_theme,show_footer,show_colored_line */}
           <iframe
-            src="https://patimus-prime-strain-selection.hf.space/?embed=true
-            &embed_options=show_toolbar
-            &embed_options=show_footer
-            &embed_options=show_colored_line
-            &embed_options=show_padding
-            "
+            src="https://strainselection.streamlit.app/~/+/?embed_options=dark_theme,show_footer,show_colored_line"
+            // src="https://strainselection.streamlit.app/?embed_options=dark_theme,show_footer,show_colored_line"
             // &embed_options=show_toolbar\
             // &embed_options=show_padding\
             // &embed_options=disable_scrolling
