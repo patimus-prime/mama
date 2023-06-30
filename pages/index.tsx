@@ -8,6 +8,7 @@ import { AppCardsSection } from '../components/HomePage/2_AppCards';
 import { IframeYeast } from '../components/dependencies/IframeYeast';
 import { IframeThesis } from '../components/dependencies/IframeThesis';
 import { IframeRDKit } from '../components/dependencies/IframeRDKit';
+import { IframeMolview } from '../components/dependencies/IframeMolview';
 import AboutPage from './About';
 import React from 'react'
 import ReactPlayer from 'react-player'
@@ -32,6 +33,7 @@ export default function HomePage() {
         </Text>
         {/* <IframeRDKit /> */}
         <IframeYeast />
+        <IframeMolview />
         <IframeThesis />
       </div>
       <AppCardsSection />
