@@ -13,7 +13,7 @@ import {
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 
-import { IconBrandLinkedin, IconBrandGithub, IconMail } from '@tabler/icons-react';
+import { IconBrandLinkedin, IconBrandGithub, IconMail, IconPhone } from '@tabler/icons-react';
 import { ColorSchemeToggle } from '../ColorSchemeToggle/ColorSchemeToggle';
 import Link from 'next/link';
 import React from 'react';
@@ -25,6 +25,14 @@ const useStyles = createStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
+
+    // position: 'fixed',
+    // top: 0,
+    // left: 0,
+    // width: '100%',
+    padding: '30px',
+    background: 'transparent', // Set the header background to transparent
+    // zIndex: 1, // Ensure the header stays on top of other content
   },
 
   links: {
@@ -55,12 +63,13 @@ const useStyles = createStyles((theme) => ({
     padding: '8px 12px',
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    color: theme.colorScheme === 'dark' ? theme.colors.gray[0] : theme.colors.gray[0],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
     '&:hover': {
       backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+
     },
   },
 
@@ -123,21 +132,49 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
   ));
 
   return (
-    <Header suppressHydrationWarning height={60} mb={120}>
+    <Header suppressHydrationWarning
+      height={0}
+      mb={30}>
       <Container className={classes.header}>
         {/* <MantineLogo size={28} /> */}
         {/* ADD OTHER PAGES/DROP DOWNS HERE: */}
 
-        <ColorSchemeToggle />
+        {/* <ColorSchemeToggle /> */}
+        {/* <Group spacing={10} className={classes.social} position="left">
+            <ActionIcon component="a" href="tel:951-852-2804" size="lg"
+              sx={(theme) => ({
+                transition: 'background-color 0.3s ease',
+                '&:hover': {
+                  backgroundColor: theme.colorScheme == 'dark' ? theme.colors.dark[6] : theme.colors.gray[0], //ttheme.colors.gray[0], // Gray-ish background on hover
+                },
+              })} //end sx
+            >
+              <div style={{ fontSize: '22px', strokeWidth: '1.5px' }}>
+                <IconPhone size={22} stroke={1.5} />
+                951-852-2804
+              </div>
+
+            </ActionIcon>
+          </Group> */}
 
         <Group position="left" spacing={5} className={classes.links}>
           <Space w="md" />
+          <IconPhone style={{ color: 'white' }} />
+          <div style={{ color: 'white' }}>
+            951-852-2804
+          </div>
+          <Space w="lg" />
+          <Space w="lg" />
+          <Space w="lg" />
+          <Space w="lg" />
+          <Space w="lg" />
+          <Space w="md" />
           {items}
-          {/* <Link passHref href="#sherbID"> HHH</Link> */}
         </Group>
 
+
         <Group spacing={10} className={classes.social} position="right" noWrap>
-          <ActionIcon component="a" href="https://www.linkedin.com/in/patrick-finnerty" size="lg"
+          {/* <ActionIcon component="a" href="https://www.linkedin.com/in/patrick-finnerty" size="lg"
             sx={(theme) => ({
               transition: 'background-color 0.3s ease',
               '&:hover': {
@@ -148,8 +185,10 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
             <div style={{ fontSize: '22px', strokeWidth: '1.5px' }}>
               <IconBrandLinkedin size={22} stroke={1.5} />
             </div>
-          </ActionIcon>
-          <ActionIcon component="a" href="https://www.github.com/patimus-prime" size="lg"
+          </ActionIcon> */}
+
+
+          {/* <ActionIcon component="a" href="https://www.github.com/patimus-prime" size="lg"
             sx={(theme) => ({
               transition: 'background-color 0.3s ease',
               '&:hover': {
@@ -161,12 +200,12 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
               <IconBrandGithub size={22} stroke={1.5} />
 
             </div>
-          </ActionIcon>
+          </ActionIcon> */}
 
           {/* HOPEFUL ALTTERNATIVE */}
           <ActionIcon
             component="a"
-            onClick={() => (window.location.href = 'mailto:pat@patrickfinnerty.com')}
+            onClick={() => (window.location.href = 'mailto:soniafinnerty14@gmail.com')}
             size="xl"
             sx={(theme) => ({
               transition: 'background-color 0.3s ease',

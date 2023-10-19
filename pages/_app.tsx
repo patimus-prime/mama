@@ -31,9 +31,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
   return (
     <>
       <Head>
-        <title>Pat!</title>
+        <title>Sonia Finnerty Realtor</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link rel="shortcut icon" href="/baticon.svg" />
+        <link rel="shortcut icon" href="/home.svg" />
       </Head>
       <div>
         {/* Also try to use user system settings for color initially: change to {colorScheme || currentColorScheme} */}
@@ -65,6 +65,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             {/* theme={{ colorScheme }} withGlobalStyles withNormalizeCSS> */}
             {/* <AppShellSimple> */}
             <AppShell
+              padding={0}
               header={
                 <HeaderSimple links={linksData} />
               }>
@@ -83,6 +84,6 @@ App.getInitialProps = async (appContext: AppContext) => {
   const appProps = await NextApp.getInitialProps(appContext);
   return {
     ...appProps,
-    colorScheme: getCookie('mantine-color-scheme', appContext.ctx) || 'dark',
+    colorScheme: getCookie('mantine-color-scheme', appContext.ctx) || 'light',
   };
 };

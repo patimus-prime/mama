@@ -2,10 +2,6 @@
 
 export const linksData = [
     { label: 'Home', link: '/#Home' },
-    { label: 'It\'s Lit!🔥', link: '/#Iframes' },
-    { label: 'Portfolio', link: '/#Portfolio' },
-    { label: 'Thesis🎓', link: 'https://patimus-prime.github.io/heme-binding/' },
-    { label: 'About', link: '/#About' },
-    { label: 'CV', link: '/Resumes/pat.pdf' },
-    { label: 'DOG!🐺', link: '/#sherbID' },
+    { label: 'Contact', link: '/#About' },
+    { label: 'Current Listings', link: 'https://www.realtor.com/realestateagents/644202b3a2c3381792312849' },
 ];

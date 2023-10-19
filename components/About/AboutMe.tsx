@@ -7,11 +7,13 @@ import {
     Text,
     List,
     ThemeIcon,
+    Space,
+    Grid,
 } from '@mantine/core';
 
 import Image from 'next/image';
 
-import { IconBat, IconBrandLinkedin, IconMail, IconPepper } from '@tabler/icons-react';
+import { IconBat, IconBrandLinkedin, IconMail, IconPhone, IconChevronRight } from '@tabler/icons-react';
 
 import Pinhead from '../../public/pinhead.gif';
 import Link from 'next/link';
@@ -71,109 +73,100 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-export default function Pat() {
+export default function Sonia() {
     const { classes } = useStyles();
     return (
-        <div>
+        <><div>
             <Container>
-                <div className={classes.inner}>
-                    <div className={classes.content}>
-                        <Title className={classes.title}>Pat</Title>
-                        <Text color="dimmed" mt="md">
-                            I am a buffoon masquerading as a functional adult; and I like to think I do a pretty
-                            good impression. In addition to that, my skills include:
-                        </Text>
+                <Grid gutter={80}>
+                    <Grid.Col span={6}>
+                        <div className={classes.inner}>
+                            <div className={classes.content}>
+                                <Title className={classes.title}>About</Title>
+                                {/* <Text color="dimmed" mt="md">
+        I am a buffoon masquerading as a functional adult; and I like to think I do a pretty
+        good impression. In addition to that, my skills include:
+    </Text> */}
 
-                        {/* 1st List; separate to have different icons */}
-                        <List
-                            mt={30}
-                            spacing="sm"
-                            size="sm"
-                            icon={
-                                <ThemeIcon size={20} radius="xl">
-                                    {/* NOTE: ALTER HERE FOR THE ICON/BULLETS */}
-                                    <IconBat size={17} stroke={1.5} />
-                                </ThemeIcon>
-                            }
-                        >
-                            <List.Item>
-                                <b>Pharma R&D, Wetlab</b> – Before my Master's, I worked for 2 years in antibody formulation
-                                development. Having the science background has been invaluable in translating
-                                chemistry between empirical papers and the computational methods
-                            </List.Item>
-                            <List.Item>
-                                <b>Data Visualization</b> – Most recently Streamlit, easily the most awesome
-                                visualization tool. And mulitple libraries in Python and R, PowerBI, Excel
-                            </List.Item>
-                            <List.Item>
-                                <b>Machine Learning</b> – Scikit, XGBoost, PyTorch, the models in DeepChem and
-                                HuggingFace, and my best friend at work, ChatGPT
-                            </List.Item>
-                            <List.Item>
-                                <b>Molecular Modeling</b> – I've worked with a few different molecular vizulation or
-                                simulation tools, e.g. Chimera, RDKit, DeepChem, Vina, AlphaFold, DiffDock
-                            </List.Item>
-
-                            <List.Item>
-                                <b>Bringing it all together</b> – I have enjoyed having several projects where one
-                                had to consider and integrate the science, the coding/modeling, and the
-                                significance, the translation of the results to real-world applications.
-                            </List.Item>
-                        </List>
-
-                        {/* 2nd LIST */}
-                        <List
-                            mt={30}
-                            spacing="sm"
-                            size="sm"
-                            icon={
-                                <ThemeIcon size={20} radius="xl">
-                                    {/* NOTE: ALTER HERE FOR THE ICON/BULLETS */}
-                                    <IconPepper size={17} stroke={1.5} />
-                                </ThemeIcon>
-                            }
-                        >
-                            <List.Item>
-                                I too enjoy spicy food... like a delicious, purifying sauna: all the sweat and tears
-                                leaving my body as I nourish it.
-                            </List.Item>
-                        </List>
+                                {/* 1st List; separate to have different icons */}
+                                <List
+                                    mt={30}
+                                    spacing="sm"
+                                    size="sm"
+                                    icon={<ThemeIcon size={20} radius="xl">
+                                        <IconChevronRight size={17} stroke={1.5} />
+                                    </ThemeIcon>}
+                                >
+                                    <List.Item>
+                                        <b>16 Years of Excellence</b> in the Real Estate Industry:
+                                        Bringing extensive experience in helping clients buy and sell homes and land in Mohave County, AZ, ensuring their real estate needs are met with expertise and professionalism.
+                                    </List.Item>
+                                    <List.Item>
+                                        <b>Specialized in Residential and Land Sales: </b>
+                                        Focusing on residential properties and land sales, I am dedicated to finding the perfect properties for buyers and helping sellers make successful transactions in the local real estate market.
+                                    </List.Item>
+                                    <List.Item>
+                                        <b>Fluent in Spanish (Hablo Español): </b>
+                                        Providing bilingual services to better assist a diverse range of clients, making the real estate process more accessible and comfortable.
+                                    </List.Item>
 
 
-                        <Group mt={30}>
-                            <Button
-                                component="a"
-                                href="https://www.linkedin.com/in/patrick-finnerty"
-                                size="xl"
-                                radius="xl"
-                                variant="gradient"
-                                className={classes.control}
-                                leftIcon={<IconBrandLinkedin size={20} />}
-                            >
-                                LinkedIn
-                            </Button>
-                            <Button
-                                compact={false} //GOOD
-                                component="a"
-                                size="xl"
-                                radius="xl"
-                                variant="gradient"
-                                gradient={{ from: 'red', to: 'gray', deg: 45 }}
-                                color="gray"
-                                leftIcon={<IconMail size={22} stroke={1.5} />}
-                                onClick={() => (window.location.href = 'mailto:patrick.finnerty42@gmail.com')}
-                            >
-                                Email me
-                            </Button>
+                                </List>
 
-                        </Group>
-                    </div>
-                    {/* 500x375; see image in public, pixels in botom right */}
-                    <Image src="/pinhead.gif" width={500 / 1.7} height={375} alt={''} />
-                </div>
+                                {/* 2nd LIST */}
+
+
+
+                                <Group mt={30}>
+                                    <Button
+                                        // next 3 lines hopefully obsolete option:
+                                        // compact={false} //GOOD
+                                        // component="a"
+                                        // onClick={() => (window.location.href = 'mailto:soniafinnerty14@gmail.com')}
+                                        // this should be superior:
+                                        component={Link}
+                                        href="mailto:soniafinnerty14@gmail.com"
+                                        size="xl"
+                                        radius="xl"
+                                        variant="gradient"
+                                        gradient={{ from: 'red', to: 'gray', deg: 45 }}
+                                        opacity={.8}
+                                        className={classes.control}
+                                        leftIcon={<IconMail size={20} />}
+                                    >
+                                        Email me
+                                    </Button>
+
+                                    <Button
+                                        component={Link}
+                                        href="tel:951-852-2804"
+                                        size="xl"
+                                        radius="xl"
+                                        variant="gradient"
+                                        gradient={{ from: 'gray', to: 'green', deg: 45 }}
+                                        opacity={.8}
+                                        className={classes.control}
+                                        leftIcon={<IconPhone size={20} />}
+
+                                    >
+                                        Call me
+                                    </Button>
+
+
+                                </Group>
+                            </div>
+                        </div>
+                    </Grid.Col>
+                    <Grid.Col span={6}>
+                        {/* 500x375; see image in public, pixels in botom right */}
+                        <Space h="xl" />
+                        <Image src="/mamarealtorcom.jpg" width={260} height={260} alt={''} />
+                    </Grid.Col>
+                </Grid>
             </Container>
             {/* <a href='/Resumes/pat.pdf' download>Click to download</a> */}
-        </div>
+        </div><Space h="xl" />
+            <Space h="xl" /></>
 
     );
 }

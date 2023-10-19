@@ -1,23 +1,26 @@
-import { Title, Text, Container, Button, Overlay, createStyles, Space, Grid, Group } from '@mantine/core';
+import { Title, Text, Container, Button, Overlay, createStyles, Space, Grid, Group, ActionIcon } from '@mantine/core';
 import { useScrollIntoView } from '@mantine/hooks';
-import { IconBrandLinkedin, IconBrandGithub } from '@tabler/icons-react';
+import { IconBrandLinkedin, IconBrandGithub, IconPhone, IconHomeDollar, IconMail } from '@tabler/icons-react';
 import Link from 'next/link';
 // import './99_SherlockGrid';
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
         position: 'relative',
-        paddingTop: 100,
-        paddingBottom: 250,
+        // paddingTop: 100,
+        // paddingBottom: 250,
+        height: '100vh',
         // current syntax for Nextjs; second one for create-react-app or others, Nextjs Image is better
-        backgroundImage: 'url(/sherb_sleepy.jpg)', // `url(${sherb_sleepy})`, // foreign syntax to me tbh. from : https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/
+        backgroundImage: 'url(/home_1.jpg)', // `url(${sherb_sleepy})`, // foreign syntax to me tbh. from : https://www.freecodecamp.org/news/react-background-image-tutorial-how-to-set-backgroundimage-with-inline-css-style/
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-
-        '@media (max-width: 520px)': {
-            paddingTop: 80,
-            paddingBottom: 50,
-        },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        // '@media (max-width: 520px)': {
+        //     paddingTop: 80,
+        //     paddingBottom: 50,
+        // },
     },
 
     inner: {
@@ -100,38 +103,86 @@ export function HeroHome() {
 
     return (
         <div className={classes.wrapper} id='Home'>
-            <Overlay color="#000" opacity={0.65} zIndex={1} />
+            {/* next line makes the background/pic above more gray, lower opacity value for brighter */}
+            <Overlay color="#000" opacity={0.50} zIndex={1} />
             {/* <Grid> */}
             {/* <Grid.Col md={8}> */}
             <div className={classes.inner}>
                 <Title className={classes.title}>
                     {/* Welcome */}
                     {/* My dog deserves the{' '} */}
-                    <Text component="span" inherit className={classes.highlight}>
-                        Welcome!
+                    <Text component="span" >
+                        {/* Welcome! ¡Bienvenidos! */}
+                        Mohave County Real Estate
                     </Text>
                 </Title>
 
                 <Container size={640}>
                     <Text size="lg" className={classes.description}>
-                        {/* Including the best website – but unfortunately he has to share it with me.
-                        <Space h="xl" /> */}
                         {/* <Space h="xl" /> */}
-                        {/* <Space h="xl" /> */}
-
-                        Welcome! ¡Bienvenidos! I'm a lot of things: a formulation and computational chemist,
-                        chemical and software engineer, but mostly I brag about my dog.
+                        {/* <Space h="xl" />
                         <Space h="xl" />
+                        <Space h="xl" /> */}
 
-                        I worked for 2 years in pharma R&D, went to get my Master's, started researching
-                        a rare genetic disease, and now, here we are (2023). My portfolio and several tools are below. And
-                        pictures of my dog.
+                        I'm a realtor serving Mohave County based in Kingman, AZ. Hablo Español.
                     </Text>
                 </Container>
 
 
                 <div className={classes.controls}>
+
+
                     <Button
+                        component={Link}
+                        href="https://www.realtor.com/realestateagents/644202b3a2c3381792312849"
+                        size="xl"
+                        radius="xl"
+                        variant="gradient"
+                        opacity={.8}
+                        className={classes.control}
+                        leftIcon={<IconHomeDollar size={20} />}
+
+                    >
+                        Current Listings
+                    </Button>
+
+                    <Button
+                        // next 3 lines hopefully obsolete option:
+                        // compact={false} //GOOD
+                        // component="a"
+                        // onClick={() => (window.location.href = 'mailto:soniafinnerty14@gmail.com')}
+
+                        // this should be superior:
+                        component={Link}
+                        href="mailto:soniafinnerty14@gmail.com"
+                        size="xl"
+                        radius="xl"
+                        variant="gradient"
+                        gradient={{ from: 'red', to: 'gray', deg: 45 }}
+                        opacity={.8}
+                        className={classes.control}
+                        leftIcon={<IconMail size={20} />}
+                    >
+                        Email me
+                    </Button>
+
+                    <Button
+                        component={Link}
+                        href="tel:951-852-2804"
+                        size="xl"
+                        radius="xl"
+                        variant="gradient"
+                        gradient={{ from: 'gray', to: 'green', deg: 45 }}
+                        opacity={.8}
+                        className={classes.control}
+                        leftIcon={<IconPhone size={20} />}
+
+                    >
+                        Call me
+                    </Button>
+
+
+                    {/* <Button
                         component={Link}
                         scroll={false}
                         href="/#Iframes"
@@ -196,7 +247,7 @@ export function HeroHome() {
                         download={true}
                     >
                         CV/Resume
-                    </Button>
+                    </Button> */}
                     {/* Link component accomodates for Next.js routing;
           Using href within button worked, but relatively slow navigation.
           From: https://mantine.dev/core/button/#usage-with-nextjs */}

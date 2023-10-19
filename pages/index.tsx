@@ -25,20 +25,8 @@ export default function HomePage() {
   return (
     <>
       <HeroHome />
-      <SoundCloudIFrame />
-      {/* <a href="https://www.buymeacoffee.com/patrickfinnerty" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a> */}
-      <div id="Iframes">
-        <Text align="center">
-          <Title>Top-notch apps!</Title>
-        </Text>
-        {/* <IframeRDKit /> */}
-        <IframeYeast />
-        <IframeMolview />
-        <IframeThesis />
-      </div>
-      <AppCardsSection />
       <AboutPage />
-      <SherlockGrid />
+      {/* <SherlockGrid /> */}
     </>
   );
 }
