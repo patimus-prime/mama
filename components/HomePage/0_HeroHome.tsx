@@ -113,7 +113,7 @@ export function HeroHome() {
                     {/* My dog deserves the{' '} */}
                     <Text component="span" >
                         {/* Welcome! ¡Bienvenidos! */}
-                        Mohave County Real Estate
+                        Real estate in Kingman, AZ
                     </Text>
                 </Title>
 

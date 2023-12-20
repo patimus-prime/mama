@@ -215,7 +215,7 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
             })} //end sx>
           >
             <div style={{ fontSize: '22px', strokeWidth: '1.5px' }}>
-              <IconMail size={22} stroke={1.5} />
+              <IconMail size={22} stroke={1.5} color='white' />
 
             </div>
 

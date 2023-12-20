@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "mamasite-d2990",
+    "staging": "mamasite-d2990"
+  },
+  "targets": {},
+  "etags": {}
+}

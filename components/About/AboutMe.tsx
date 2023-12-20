@@ -160,7 +160,20 @@ export default function Sonia() {
                     <Grid.Col span={6}>
                         {/* 500x375; see image in public, pixels in botom right */}
                         <Space h="xl" />
-                        <Image src="/mamarealtorcom.jpg" width={260} height={260} alt={''} />
+                        {/* Adjust the... geometry below based on px etc. */}
+
+                        {/* Produce a circle: */}
+                        {/* <div style={{ borderRadius: '50%', overflow: 'hidden', width: '260px', height: '260px', border: '1px solid #ccc' }}>
+                            <Image src="/mamarealtorcom.jpg" width={260} height={260} alt={''} />
+                        </div> */}
+
+                        {/* Simply round the edges */}
+                        <div style={{ borderRadius: '10px', overflow: 'hidden', width: '260px', height: '260px', border: '1px solid #ccc' }}>
+                            <Image src="/mamarealtorcom.jpg" width={260} height={260} alt={''} />
+                        </div>
+
+
+                        {/* <Image src="/mamarealtorcom.jpg" width={260} height={260} alt={''} /> */}
                     </Grid.Col>
                 </Grid>
             </Container>

@@ -33,6 +33,7 @@
     "cookies-next": "^2.1.1",
     "dayjs": "^1.11.6",
     "embla-carousel-react": "^7.0.3",
+    "firebase": "^10.7.1",
     "i18next": "^23.2.11",
     "next": "13.2.4",
     "react": "18.2.0",
