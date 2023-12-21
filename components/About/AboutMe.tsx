@@ -168,8 +168,11 @@ export default function Sonia() {
                         </div> */}
 
                         {/* Simply round the edges */}
-                        <div style={{ borderRadius: '10px', overflow: 'hidden', width: '260px', height: '260px', border: '1px solid #ccc' }}>
-                            <Image src="/mama.jpg" width={260} height={260} alt={''} />
+                        <div style={{
+                            borderRadius: '10px', overflow: 'hidden', width: '400px', height: '400px', border: '1px solid #ccc',
+                            filter: 'brightness(110%)' /* Adjust the percentage as needed */
+                        }}>
+                            <Image src="/mama.jpg" width={2047 / 5} height={2042 / 5} alt={''} />
                         </div>
 
 
