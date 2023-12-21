@@ -4,6 +4,8 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { MantineProvider, ColorScheme, ColorSchemeProvider, AppShell } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
+import { Analytics } from '@vercel/analytics/react';
+// import { SpeedInsights } from "@vercel/speed-insights/next"
 // import AppShellSimple from '../components/Navigation/AppShellSimple';
 // import { HeaderSimple } from '../components/Navigation/HeaderSimple';
 // delta for SSR according to https://mantine.dev/theming/emotion-cache/#server-side-rendering-with-custom-cache
@@ -64,6 +66,10 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             {/* next line is default; i... yeah apparently you just need to add the param lolololol */}
             {/* theme={{ colorScheme }} withGlobalStyles withNormalizeCSS> */}
             {/* <AppShellSimple> */}
+
+            {/* 23 DEC 2023: ADDING VERECEL ANALYTICS ETC. HERE */}
+            <Analytics />
+            {/* <SpeedInsights /> */}
             <AppShell
               padding={0}
               header={
