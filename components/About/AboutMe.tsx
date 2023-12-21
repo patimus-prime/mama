@@ -169,7 +169,7 @@ export default function Sonia() {
 
                         {/* Simply round the edges */}
                         <div style={{ borderRadius: '10px', overflow: 'hidden', width: '260px', height: '260px', border: '1px solid #ccc' }}>
-                            <Image src="/mamarealtorcom.jpg" width={260} height={260} alt={''} />
+                            <Image src="/mama.jpg" width={260} height={260} alt={''} />
                         </div>
 
 
